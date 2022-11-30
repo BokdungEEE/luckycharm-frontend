@@ -8,16 +8,15 @@ import { useNavigate } from 'react-router-dom';
 const Select = () => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState({});
-  const onSelected = () => {
+  const onSelect = () => {
     navigate('/message', { state: { selected } });
   };
-  console.log(selected);
 
   return (
     <Container>
       <ArrowImg />
       <p>친구에게 보낼 떡국 재료 한 가지를 선택해주세요</p>
-      <IContainer>
+      <SelectContainer>
         {data.map((data, index) => (
           <Ingredient
             key={index}
@@ -29,10 +28,10 @@ const Select = () => {
             selected={selected}
           />
         ))}
-      </IContainer>
-      <SelectedBtn onClick={onSelected} selected={selected.index}>
+      </SelectContainer>
+      <SelectButton onClick={onSelect} isselected={selected.index}>
         재료선택완료
-      </SelectedBtn>
+      </SelectButton>
     </Container>
   );
 };
@@ -47,14 +46,14 @@ const Container = styled.div`
   align-items: center;
   background-color: #947e5e;
 `;
-const IContainer = styled.div`
+const SelectContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
-const SelectedBtn = styled.button`
-  background-color: ${(props) => (props.selected ? '#EEECDD' : '#EEECDD')};
-  color: ${(props) => (props.selected ? '#947E5E' : '#D0CDB5')};
-  opacity: ${(props) => !props.selected && 0.6};
+const SelectButton = styled.button`
+  background-color: ${(props) => (props.isselected ? '#EEECDD' : '#EEECDD')};
+  color: ${(props) => (props.isselected ? '#947E5E' : '#D0CDB5')};
+  opacity: ${(props) => !props.isselected && 0.6};
   :active {
     color: #d0cdb5;
   }
