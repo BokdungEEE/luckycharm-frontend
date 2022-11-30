@@ -7,11 +7,12 @@ import { useNavigate } from 'react-router-dom';
 
 const Select = () => {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState({});
   const onSelected = () => {
-    navigate('/message', { state: { text: selected } });
+    navigate('/message', { state: { selected } });
   };
   console.log(selected);
+
   return (
     <Container>
       <ArrowImg />
@@ -20,14 +21,18 @@ const Select = () => {
         {data.map((data, index) => (
           <Ingredient
             key={index}
+            index={index}
             source={data.img}
             color={data.color}
             text={data.text}
             setSelected={setSelected}
+            selected={selected}
           />
         ))}
       </IContainer>
-      <button onClick={onSelected}>재료선택완료</button>
+      <SelectedBtn onClick={onSelected} selected={selected.index}>
+        재료선택완료
+      </SelectedBtn>
     </Container>
   );
 };
@@ -40,10 +45,19 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #947e5e;
 `;
 const IContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+`;
+const SelectedBtn = styled.button`
+  background-color: ${(props) => (props.selected ? '#EEECDD' : '#EEECDD')};
+  color: ${(props) => (props.selected ? '#947E5E' : '#D0CDB5')};
+  opacity: ${(props) => !props.selected && 0.6};
+  :active {
+    color: #d0cdb5;
+  }
 `;
 
 export default Select;

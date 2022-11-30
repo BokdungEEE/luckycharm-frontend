@@ -7,27 +7,27 @@ export const data = [
   },
   {
     img: Ingredient,
-    text: '파',
+    text: '파1',
     color: 'green',
   },
   {
     img: Ingredient,
-    text: '파',
+    text: '파2',
     color: 'green',
   },
   {
     img: Ingredient,
-    text: '파',
+    text: '파3',
     color: 'green',
   },
   {
     img: Ingredient,
-    text: '파',
+    text: '파4',
     color: 'green',
   },
   {
     img: Ingredient,
-    text: '파',
+    text: '파5',
     color: 'green',
   },
 ];

@@ -1,11 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Ingredient = ({ source, text, color, setSelected }) => {
+const Ingredient = ({ source, text, color, setSelected, selected, index }) => {
   return (
     <Container>
       <Img src={source} />
-      <Btn onClick={() => setSelected(text)} color={color}>
+      <Btn
+        onClick={() => {
+          setSelected({ img: source, text, index });
+        }}
+        bColor={selected.index === index && color}
+      >
         {text}
       </Btn>
     </Container>
@@ -22,9 +27,12 @@ const Img = styled.img`
   height: 140px;
 `;
 const Btn = styled.button`
-  :hover {
-    color: ${(props) => props.color};
-  }
+  background-color: #d0cdb5;
+  border-radius: 24px;
+  width: 96px;
+  border: none;
+  height: 36px;
+  background-color: ${(props) => props?.bColor};
 `;
 
 export default Ingredient;
