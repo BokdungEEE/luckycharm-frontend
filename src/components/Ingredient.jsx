@@ -7,7 +7,7 @@ const Ingredient = ({ source, text, color, setSelected, selected, index }) => {
       <IngredientImg src={source} />
       <SelectButton
         onClick={() => {
-          setSelected({ img: source, text, index });
+          setSelected({ img: source, ingredient: text, index });
         }}
         buttonColor={selected.index === index && color}
       >

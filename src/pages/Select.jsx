@@ -11,10 +11,12 @@ const Select = () => {
   const onSelect = () => {
     navigate('/message', { state: { selected } });
   };
-
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <Container>
-      <ArrowImg />
+      <ArrowImg onClick={goBack} />
       <p>친구에게 보낼 떡국 재료 한 가지를 선택해주세요</p>
       <SelectContainer>
         {data.map((data, index) => (
@@ -29,7 +31,11 @@ const Select = () => {
           />
         ))}
       </SelectContainer>
-      <SelectButton onClick={onSelect} isselected={selected.index}>
+      <SelectButton
+        onClick={onSelect}
+        isselected={selected.index}
+        disabled={!selected.index}
+      >
         재료선택완료
       </SelectButton>
     </Container>
