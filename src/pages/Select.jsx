@@ -17,7 +17,11 @@ const Select = () => {
   return (
     <Container>
       <ArrowImg onClick={goBack} />
-      <p>친구에게 보낼 떡국 재료 한 가지를 선택해주세요</p>
+      <Text>
+        친구에게 보낼
+        <br />
+        떡국 재료 한 가지를 선택해주세요
+      </Text>
       <SelectContainer>
         {data.map((data, index) => (
           <Ingredient
@@ -46,23 +50,36 @@ const ArrowImg = styled(Arrow)`
 `;
 const Container = styled.div`
   width: 390px;
-  height: 982px;
+  height: 884px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #947e5e;
+  padding: 49px 24px 80px;
+  justify-content: space-between;
+`;
+const Text = styled.p`
+  align-self: flex-start;
+  color: #eeecdd;
 `;
 const SelectContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
+  height: 700px;
 `;
 const SelectButton = styled.button`
   background-color: ${(props) => (props.isselected ? '#EEECDD' : '#EEECDD')};
   color: ${(props) => (props.isselected ? '#947E5E' : '#D0CDB5')};
-  opacity: ${(props) => !props.isselected && 0.6};
+  opacity: ${(props) => (!props.isselected ? 0.6 : 1)};
   :active {
     color: #d0cdb5;
   }
+  border: none;
+  width: 236px;
+  height: 52px;
+  opacity: 0.6;
+  border-radius: 27px;
 `;
 
 export default Select;
