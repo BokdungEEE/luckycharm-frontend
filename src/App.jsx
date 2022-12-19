@@ -6,10 +6,12 @@ import LoginPage from './pages/loginPage.jsx';
 import KakaoLogin from './pages/KakaoLogin';
 import Select from './pages/Select';
 import Message from './pages/Message';
+import DiscriptionModal from './components/DiscriptionModal';
 
 const App = () => {
   return (
     <div>
+      <DiscriptionModal />
       <GlobalStyle />
       <Routes>
         <Route path='/login' element={<LoginPage />} />
