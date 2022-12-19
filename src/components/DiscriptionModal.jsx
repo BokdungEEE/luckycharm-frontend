@@ -34,7 +34,7 @@ const DiscriptionModal = () => {
 
 export default DiscriptionModal;
 
-const Container = styled.div`
+export const Container = styled.div`
   background-color: rgba(56, 51, 43, 0.8);
   position: absolute;
   height: 100vh;
