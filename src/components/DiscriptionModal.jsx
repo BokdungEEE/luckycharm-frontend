@@ -13,12 +13,17 @@ const DiscriptionModal = () => {
         <Content>
           <Text>
             <p>친구에게 재료를 담아 보낼 수 있는</p>
-            <p>기본 10개의 빈 그릇</p>
             <p>
-              이 주어집니다.
+              <span>기본 10개의 빈 그릇</span>이 주어집니다.
+            </p>
+            <p>
+              <br /> 친구들에게 재료와 메시지를
               <br />
-              <br /> 친구들에게 재료와 메시지를 보낼 때마다 그릇이 소모되며,
-              이후에는 친구들에게 재료를 받은 만큼 그릇이 충전됩니다.
+              보낼 때마다 그릇이 소모되며,
+              <br />
+              이후에는 친구들에게 재료를
+              <br />
+              받은 만큼 그릇이 충전됩니다.
               <br />
               <br />
               기본으로 주어지는 10개의 그릇을 소진했다면 친구에게 재료와
@@ -60,8 +65,10 @@ const Content = styled.div`
 `;
 const Text = styled.div`
   text-align: center;
-  p:nth-child(2) {
+  white-space: pre-wrap;
+  span {
     color: #e9b68f;
   }
+  line-height: 25px;
 `;
 const ConfirmButton = styled.button``;

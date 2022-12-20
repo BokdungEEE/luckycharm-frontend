@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ReactComponent as Arrow } from '../asset/arrow.svg';
 import styled from 'styled-components';
+import { LongButton } from '../components/button';
 
 const Message = () => {
   const location = useLocation();
@@ -45,9 +46,9 @@ const Message = () => {
       <ContentContainer>
         <ContentInput onChange={handleContent} />
       </ContentContainer>
-      <SendButton onClick={handleSubmit} disabled={!(nickname && content)}>
+      <LongButton onClick={handleSubmit} disabled={!(nickname && content)}>
         친구에게 보내기
-      </SendButton>
+      </LongButton>
     </Container>
   );
 };

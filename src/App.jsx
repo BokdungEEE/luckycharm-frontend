@@ -7,13 +7,12 @@ import KakaoLogin from './pages/KakaoLogin';
 import Select from './pages/Select';
 import Message from './pages/Message';
 import DiscriptionModal from './components/DiscriptionModal';
-import MessageModal from './components/MessageModal';
 
 const App = () => {
   return (
     <div>
-      <MessageModal />
       <GlobalStyle />
+      <DiscriptionModal />
       <Routes>
         <Route path='/login' element={<LoginPage />} />
         <Route path='/' element={<MainPage />} />
