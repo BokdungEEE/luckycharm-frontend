@@ -102,9 +102,3 @@ const ContentInput = styled.textarea`
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='26' ry='26' stroke='%23947E5EFF' stroke-width='2' stroke-dasharray='5%2c10' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
   border-radius: 26px;
 `;
-const SendButton = styled.button`
-  width: 236px;
-  height: 52px;
-  background: #eeecdd;
-  border-radius: 27px;
-`;
