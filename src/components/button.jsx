@@ -16,6 +16,7 @@ export const LongButton = styled.button`
   font-size: 24px;
   color: ${(props) => props.theme.colors.brown};
   box-shadow: 0px 2px 6px rgba(29, 29, 29, 0.25);
+  cursor: pointer;
 `;
 
 export const ConfirmButton = styled.button`
