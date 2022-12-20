@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ReactComponent as Arrow } from '../asset/arrow.svg';
 import styled from 'styled-components';
+import { LongButton } from '../components/button';
 
 const Message = () => {
   const location = useLocation();
@@ -33,9 +34,9 @@ const Message = () => {
       <img src={img} />
       <NicknameInput onChange={handleNickName} type='text' />
       <ContentInput onChange={handleContent} />
-      <SendButton onClick={handleSubmit} disabled={!(nickname && content)}>
+      <LongButton onClick={handleSubmit} disabled={!(nickname && content)}>
         친구에게 보내기
-      </SendButton>
+      </LongButton>
     </Container>
   );
 };
@@ -67,10 +68,4 @@ const ContentInput = styled.textarea`
   height: 282px;
   background: #eeecdd;
   border-radius: 30px;
-`;
-const SendButton = styled.button`
-  width: 236px;
-  height: 52px;
-  background: #eeecdd;
-  border-radius: 27px;
 `;

@@ -4,6 +4,7 @@ import { data } from '../data/selectData';
 import Ingredient from '../components/Ingredient';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { LongButton } from '../components/button';
 
 const Select = () => {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const Select = () => {
             index={index}
             source={data.img}
             color={data.color}
+            bgcolor={data.bgcolor}
             text={data.text}
             setSelected={setSelected}
             selected={selected}
@@ -56,7 +58,9 @@ const SelectContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
-const SelectButton = styled.button`
+const SelectButton = styled(LongButton)`
+  /* position: absolute;
+  top: 848px; */
   background-color: ${(props) => (props.isselected ? '#EEECDD' : '#EEECDD')};
   color: ${(props) => (props.isselected ? '#947E5E' : '#D0CDB5')};
   opacity: ${(props) => !props.isselected && 0.6};

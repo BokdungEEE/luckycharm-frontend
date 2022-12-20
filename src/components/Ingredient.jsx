@@ -1,7 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IngredientButton } from './button';
 
-const Ingredient = ({ source, text, color, setSelected, selected, index }) => {
+const Ingredient = ({
+  source,
+  text,
+  color,
+  bgcolor,
+  setSelected,
+  selected,
+  index,
+}) => {
   return (
     <Container>
       <IngredientImg src={source} />
@@ -9,7 +18,8 @@ const Ingredient = ({ source, text, color, setSelected, selected, index }) => {
         onClick={() => {
           setSelected({ img: source, ingredient: text, index });
         }}
-        buttonColor={selected.index === index && color}
+        textColor={selected.index === index && color}
+        buttonColor={selected.index === index && bgcolor}
       >
         {text}
       </SelectButton>
@@ -26,12 +36,8 @@ const IngredientImg = styled.img`
   width: 140px;
   height: 140px;
 `;
-const SelectButton = styled.button`
-  background-color: #d0cdb5;
-  border-radius: 24px;
-  width: 96px;
-  border: none;
-  height: 36px;
+const SelectButton = styled(IngredientButton)`
+  color: ${(props) => props?.textColor};
   background-color: ${(props) => props?.buttonColor};
 `;
 
