@@ -10,7 +10,7 @@ const IntroPage = () => {
       <TextWrapper>
         <Title>내 떡국을 완성해줘!</Title>
         <SmallGray>
-          설날이 되면 받은 재료들로 안녕
+          설날이 되면 받은 재료들로
           <br />
           토끼가 맛있는 떡국을 먹을 수 있도록
           <br />
@@ -63,4 +63,15 @@ const ButtonWrapper = styled.div`
   bottom: 100px;
   justify-content: center;
   cursor: pointer !important;
+  display: flex;
+  justify-content: center;
+`;
+
+const SendButton = styled.button`
+  width: 236px;
+  height: 52px;
+  background-color: #eeecde;
+  border-radius: 27px;
+  position: relative;
+  top: 600px;
 `;

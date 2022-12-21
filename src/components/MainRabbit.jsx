@@ -44,13 +44,14 @@ const BubbleWrapper = styled.div`
   justify-content: center;
   width: 160px;
   height: 100px;
-  //padding: 10px;
+  padding: 10px;
   position: absolute;
   top: 35%;
   left: 50%;
 `;
 
 const BubbleText = styled.p`
+  font-family: 'GangwonEduAll';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
