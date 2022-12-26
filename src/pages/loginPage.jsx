@@ -53,6 +53,7 @@ const SmallGray = styled.h2`
   position: relative;
   font-size: 16px;
   font-weight: 400;
+  line-height: 24px;
   color: ${defaultTheme.colors.gray};
 `;
 

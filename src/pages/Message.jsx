@@ -16,17 +16,26 @@ const Message = () => {
   const handleContent = (e) => {
     setContent(e.target.value);
   };
+
   const handleSubmit = () => {
     const submitObj = {
       ingredient,
       nickname,
       content,
     };
+    navigate('/submit', {
+      state: {
+        img: img,
+      },
+    });
+
     console.log(submitObj);
   };
+
   const goBack = () => {
     navigate(-1);
   };
+
   return (
     <Container>
       <ArrowImg onClick={goBack} />
@@ -62,10 +71,22 @@ const NicknameInput = styled.input`
   height: 52px;
   background: #eeecdd;
   border-radius: 30px;
+  padding: 20px;
+  border: none;
+  &:focus {
+    outline: none;
+  }
 `;
+
 const ContentInput = styled.textarea`
   width: 342px;
   height: 282px;
   background: #eeecdd;
   border-radius: 30px;
+  border: none;
+  padding: 20px;
+  &:focus {
+    outline: none;
+  }
+  resize: none;
 `;

@@ -2,33 +2,34 @@ import React from 'react';
 import styled from 'styled-components';
 import Rabbit from '../components/MainRabbit';
 import background from '../asset/texture.svg';
-import { defaultTheme } from '../styles/theme';
 import { LongButton } from '../components/button';
+import { defaultTheme } from '../styles/theme';
+import { useLocation } from 'react-router-dom';
 
-const IntroPage = () => {
+const SubmitPage = () => {
+  const location = useLocation();
   const state = location.state;
   const img = state.img;
   return (
     <Container>
       <TextWrapper>
-        <Title>내 떡국을 완성해줘!</Title>
+        <Title>THANK YOU!</Title>
         <SmallGray>
-          설날이 되면 받은 재료들로
-          <br />
-          토끼가 맛있는 떡국을 먹을 수 있도록
-          <br />
-          떡국 재료와 함께 새해 인사 메시지를 보내주세요
+          떡국 재료와 메시지를 보내주어 고마워요!
+          <br /> 새해 복 가득 받으세요.
         </SmallGray>
       </TextWrapper>
-      <Rabbit />
+      <Rabbit emotion='laugh' text='보내줘서 고마워!' />
+      <IngredientWrapper>
+        <img src={img} alt='ingred' />
+      </IngredientWrapper>
       <ButtonWrapper>
-        <LongButton type='button'>떡국 재료 보내기</LongButton>
+        <LongButton type='button'>내 페이지로 가기</LongButton>
       </ButtonWrapper>
     </Container>
   );
 };
-
-export default IntroPage;
+export default SubmitPage;
 
 const Container = styled.div`
   height: 844px;
@@ -50,8 +51,8 @@ const SmallGray = styled.h2`
   position: relative;
   font-size: 16px;
   font-weight: 400;
-  color: ${defaultTheme.colors.gray};
   line-height: 24px;
+  color: ${defaultTheme.colors.gray};
 `;
 
 const TextWrapper = styled.div`
@@ -64,9 +65,16 @@ const ButtonWrapper = styled.div`
   left: 50%;
   transform: translate(-50%);
   position: absolute;
-  bottom: 100px;
+  bottom: 50px;
   justify-content: center;
   cursor: pointer !important;
   display: flex;
   justify-content: center;
+`;
+
+const IngredientWrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 120px;
 `;

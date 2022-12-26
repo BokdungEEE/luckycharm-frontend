@@ -6,6 +6,7 @@ import KakaoLogin from './pages/KakaoLogin';
 import Select from './pages/Select';
 import Message from './pages/Message';
 import IntroPage from './pages/IntroPage';
+import SubmitPage from './pages/SubmitPage';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path='/oauth' element={<KakaoLogin />} />
         <Route path='/select' element={<Select />} />
         <Route path='/message' element={<Message />} />
+        <Route path='/submit' element={<SubmitPage />} />
       </Routes>
     </div>
   );
