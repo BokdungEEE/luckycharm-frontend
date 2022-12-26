@@ -10,7 +10,6 @@ export const GlobalStyle = createGlobalStyle`
   body{
     margin : 0;
     padding:0;
-<<<<<<< HEAD
     font-family: 'GangwonEdu_OTFBoldA';
 
   }
@@ -25,9 +24,5 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'GangwonEdu_OTFBoldA';
     border: none;
     font-weight: 400;
-=======
-
-    
->>>>>>> 317c5e0d2999ad876e41bdc3375937fe1dea5f73
   }
 `;
