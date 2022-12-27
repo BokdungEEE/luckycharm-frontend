@@ -2,9 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Rabbit from '../components/MainRabbit';
 import background from '../asset/texture.svg';
+import { defaultTheme } from '../styles/theme';
 import { LongButton } from '../components/button';
 
 const IntroPage = () => {
+  const state = location.state;
+  const img = state.img;
   return (
     <Container>
       <TextWrapper>
@@ -39,7 +42,7 @@ const Title = styled.h1`
   margin-top: 80px;
   font-size: 32px;
   font-weight: 400;
-  color: #e9b68f;
+  color: ${defaultTheme.colors.red};
   margin-bottom: 18px;
 `;
 
@@ -47,7 +50,8 @@ const SmallGray = styled.h2`
   position: relative;
   font-size: 16px;
   font-weight: 400;
-  color: #545454;
+  color: ${defaultTheme.colors.gray};
+  line-height: 24px;
 `;
 
 const TextWrapper = styled.div`
@@ -65,13 +69,4 @@ const ButtonWrapper = styled.div`
   cursor: pointer !important;
   display: flex;
   justify-content: center;
-`;
-
-const SendButton = styled.button`
-  width: 236px;
-  height: 52px;
-  background-color: #eeecde;
-  border-radius: 27px;
-  position: relative;
-  top: 600px;
 `;
