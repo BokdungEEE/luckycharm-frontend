@@ -19,13 +19,13 @@ const LoginPage = () => {
             <br /> 로그인이 필요합니다.
           </SmallGray>
         </TextWrapper>
-        <Rabbit emotion='laugh' text='떡국 먹자!' />
+        <Rabbit emotion='laugh' text='올해는 나의 해!' />
         <ButtonWrapper>
           <LongButton type='button'>
             <KakaoLink
               href={`https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`}
             >
-              카카오로 로그인
+              카카오 로그인
             </KakaoLink>
           </LongButton>
         </ButtonWrapper>

@@ -43,16 +43,15 @@ const RabbitWrapper = styled.img`
 `;
 
 const BubbleWrapper = styled.div`
-  //border: 1px solid black;
   display: flex;
   background-image: url('${background}');
   background-repeat: no-repeat;
-  background-position: cover;
+  background-size: cover;
   align-items: center;
   justify-content: center;
-  width: 160px;
+  width: 180px;
   height: 100px;
-  padding: 10px;
+  padding: 15px;
   position: absolute;
   top: 35%;
   left: 50%;
