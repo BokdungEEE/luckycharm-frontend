@@ -26,8 +26,8 @@ const Select = () => {
       <SelectContainer>
         {data.map((data, index) => (
           <Ingredient
-            key={index}
-            index={index}
+            key={index + 1}
+            index={index + 1}
             source={data.img}
             color={data.color}
             bgcolor={data.bgcolor}
@@ -49,6 +49,7 @@ const Select = () => {
 };
 const ArrowImg = styled(Arrow)`
   align-self: flex-start;
+  margin-bottom: 15px;
 `;
 const Container = styled.div`
   width: 390px;
@@ -57,12 +58,14 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #947e5e;
-  padding: 49px 24px 80px;
+  padding: 49px 24px 30px;
   justify-content: space-between;
 `;
 const Text = styled.p`
   align-self: flex-start;
   color: #eeecdd;
+  line-height: 26px;
+  margin-bottom: 30px;
 `;
 const SelectContainer = styled.div`
   display: flex;

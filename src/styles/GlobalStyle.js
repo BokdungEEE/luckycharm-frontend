@@ -7,16 +7,17 @@ export const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
   }
+  @font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url(${GangwonEdu_OTFBoldA}) format('woff')
+  }
   body{
     margin : 0;
     padding:0;
     font-family: 'GangwonEdu_OTFBoldA';
 
   }
-  @font-face {
-    font-family: 'GangwonEdu_OTFBoldA';
-    src: url(${GangwonEdu_OTFBoldA}) format('woff')
-  }
+
   button{
     display: flex;
     align-items: center;

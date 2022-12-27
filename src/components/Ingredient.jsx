@@ -37,8 +37,8 @@ const IngredientImg = styled.img`
   height: 140px;
 `;
 const SelectButton = styled(IngredientButton)`
-  color: ${(props) => props?.textColor};
-  background-color: ${(props) => props?.buttonColor};
+  color: ${(props) => props.textColor || 'white'};
+  background-color: ${(props) => props.buttonColor || props.theme.colors.beige};
 `;
 
 export default Ingredient;
