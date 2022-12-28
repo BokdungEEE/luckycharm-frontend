@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from './styles/GlobalStyle';
+import LoginPage from './pages/LoginPage';
 import KakaoLogin from './pages/KakaoLogin';
 import Select from './pages/Select';
 import Message from './pages/Message';
-import DiscriptionModal from './components/DiscriptionModal';
 import IntroPage from './pages/IntroPage';
-import LoginPage from './pages/LoginPage';
+import SubmitPage from './pages/SubmitPage';
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
         <Route path='/oauth' element={<KakaoLogin />} />
         <Route path='/select' element={<Select />} />
         <Route path='/message' element={<Message />} />
-        <Route path='/intro' element={<IntroPage />} />
+        <Route path='/submit' element={<SubmitPage />} />
       </Routes>
     </div>
   );

@@ -16,17 +16,26 @@ const Message = () => {
   const handleContent = (e) => {
     setContent(e.target.value);
   };
+
   const handleSubmit = () => {
     const submitObj = {
       ingredient,
       nickname,
       content,
     };
+    navigate('/submit', {
+      state: {
+        img: img,
+      },
+    });
+
     console.log(submitObj);
   };
+
   const goBack = () => {
     navigate(-1);
   };
+
   return (
     <Container>
       <ArrowImg onClick={goBack} />
