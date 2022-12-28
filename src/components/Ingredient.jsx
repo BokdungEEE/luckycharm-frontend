@@ -3,23 +3,23 @@ import styled from 'styled-components';
 import { IngredientButton } from './button';
 
 const Ingredient = ({
+  id,
   source,
   text,
   color,
   bgcolor,
   setSelected,
   selected,
-  index,
 }) => {
   return (
     <Container>
       <IngredientImg src={source} />
       <SelectButton
         onClick={() => {
-          setSelected({ img: source, ingredient: text, index });
+          setSelected(id);
         }}
-        textColor={selected.index === index && color}
-        buttonColor={selected.index === index && bgcolor}
+        textColor={selected === id && color}
+        buttonColor={selected === id && bgcolor}
       >
         {text}
       </SelectButton>

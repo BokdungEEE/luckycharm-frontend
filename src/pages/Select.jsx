@@ -8,7 +8,7 @@ import { LongButton } from '../components/button';
 
 const Select = () => {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState({});
+  const [selected, setSelected] = useState('');
   const onSelect = () => {
     navigate('/message', { state: { selected } });
   };
@@ -24,14 +24,14 @@ const Select = () => {
         떡국 재료 한 가지를 선택해주세요
       </Text>
       <SelectContainer>
-        {data.map((data, index) => (
+        {data.map((ingredient) => (
           <Ingredient
-            key={index + 1}
-            index={index + 1}
-            source={data.img}
-            color={data.color}
-            bgcolor={data.bgcolor}
-            text={data.text}
+            key={ingredient.id}
+            id={ingredient.id}
+            source={ingredient.img}
+            color={ingredient.color}
+            bgcolor={ingredient.bgcolor}
+            text={ingredient.text}
             setSelected={setSelected}
             selected={selected}
           />
@@ -39,8 +39,8 @@ const Select = () => {
       </SelectContainer>
       <SelectButton
         onClick={onSelect}
-        isselected={selected.index}
-        disabled={!selected.index}
+        isselected={selected}
+        disabled={!selected}
       >
         재료선택완료
       </SelectButton>
@@ -74,8 +74,6 @@ const SelectContainer = styled.div`
   height: 700px;
 `;
 const SelectButton = styled(LongButton)`
-  /* position: absolute;
-  top: 848px; */
   background-color: ${(props) => (props.isselected ? '#EEECDD' : '#EEECDD')};
   color: ${(props) => (props.isselected ? '#947E5E' : '#D0CDB5')};
   opacity: ${(props) => (!props.isselected ? 0.6 : 1)};
