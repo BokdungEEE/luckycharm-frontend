@@ -39,7 +39,7 @@ export const data = [
     img: Egg,
     text: '계란',
     color: '#FFFFFF',
-    bgcolor: '#F3CE95',
+    bgcolor: '#FFCA43',
   },
   {
     id: 'water',
