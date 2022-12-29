@@ -7,7 +7,7 @@ import { LongButton } from '../components/button';
 const Message = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { img, ingredient } = location.state.selected;
+  const { img, ingredient } = location.state.selectedData;
   const [nickname, setNickname] = useState('');
   const [content, setContent] = useState('');
   const handleNickName = (e) => {

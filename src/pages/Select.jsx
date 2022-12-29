@@ -5,12 +5,18 @@ import Ingredient from '../components/Ingredient';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { LongButton } from '../components/button';
+import { useEffect } from 'react';
 
 const Select = () => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState('');
+  const [selectedData, setData] = useState({});
+  useEffect(() => {
+    const select = data.filter((ingredient) => selected == ingredient.id)[0];
+    setData(select);
+  }, [selected]);
   const onSelect = () => {
-    navigate('/message', { state: { selected } });
+    navigate('/message', { state: { selectedData } });
   };
   const goBack = () => {
     navigate(-1);
