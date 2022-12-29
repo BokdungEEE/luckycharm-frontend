@@ -84,7 +84,6 @@ const SelectButton = styled(LongButton)`
     props.isselected ? props.theme.colors.brown : props.theme.colors.beige};
   opacity: ${(props) => (!props.isselected ? 0.6 : 1)};
   border: none;
-  opacity: 0.6;
 `;
 
 export default Select;

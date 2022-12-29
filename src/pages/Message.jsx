@@ -73,7 +73,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 390px;
-  height: 982px;
+  height: 844px;
   background-color: #947e5e;
 `;
 const Text = styled.p`
