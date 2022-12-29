@@ -13,7 +13,7 @@ export const LongButton = styled.button`
   width: 236px;
   height: 52px;
   border-radius: 27px;
-  background: ${(props) => props.theme.colors.iv};
+  background: ${(props) => props.theme.colors.ivory};
   font-size: 24px;
   color: ${(props) => props.theme.colors.brown};
   box-shadow: 0px 2px 6px rgba(29, 29, 29, 0.25);

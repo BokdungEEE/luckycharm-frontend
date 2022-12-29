@@ -74,17 +74,11 @@ const SelectContainer = styled.div`
   height: 700px;
 `;
 const SelectButton = styled(LongButton)`
-  background-color: ${(props) => (props.isselected ? '#EEECDD' : '#EEECDD')};
-  color: ${(props) => (props.isselected ? '#947E5E' : '#D0CDB5')};
+  color: ${(props) =>
+    props.isselected ? props.theme.colors.brown : props.theme.colors.beige};
   opacity: ${(props) => (!props.isselected ? 0.6 : 1)};
-  :active {
-    color: #d0cdb5;
-  }
   border: none;
-  width: 236px;
-  height: 52px;
   opacity: 0.6;
-  border-radius: 27px;
 `;
 
 export default Select;
