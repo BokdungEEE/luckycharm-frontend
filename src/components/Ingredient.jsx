@@ -3,23 +3,23 @@ import styled from 'styled-components';
 import { IngredientButton } from './button';
 
 const Ingredient = ({
+  id,
   source,
   text,
   color,
   bgcolor,
   setSelected,
   selected,
-  index,
 }) => {
   return (
     <Container>
       <IngredientImg src={source} />
       <SelectButton
         onClick={() => {
-          setSelected({ img: source, ingredient: text, index });
+          setSelected(id);
         }}
-        textColor={selected.index === index && color}
-        buttonColor={selected.index === index && bgcolor}
+        textColor={selected === id && color}
+        buttonColor={selected === id && bgcolor}
       >
         {text}
       </SelectButton>
@@ -30,15 +30,15 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
+  width: 40%;
 `;
 const IngredientImg = styled.img`
   width: 140px;
   height: 140px;
 `;
 const SelectButton = styled(IngredientButton)`
-  color: ${(props) => props?.textColor};
-  background-color: ${(props) => props?.buttonColor};
+  color: ${(props) => props.textColor || 'white'};
+  background-color: ${(props) => props.buttonColor || props.theme.colors.beige};
 `;
 
 export default Ingredient;

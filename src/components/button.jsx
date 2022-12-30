@@ -6,6 +6,7 @@ export const IngredientButton = styled.button`
   height: 42px;
   border-radius: 24px;
   font-size: 16px;
+  font-family: 'GangwonEdu_OTFBoldA';
   color: ${(props) => props.color || '#ffffff'};
   background: ${(props) => props.backgroundcolor || props.theme.colors.beige};
 `;

@@ -8,6 +8,7 @@ import Message from './pages/Message';
 import IntroPage from './pages/IntroPage';
 import SubmitPage from './pages/SubmitPage';
 import MainPage from './pages/MainPage';
+import './styles/GlobalFont.css';
 
 const App = () => {
   return (

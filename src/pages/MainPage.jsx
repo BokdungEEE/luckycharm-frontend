@@ -4,7 +4,7 @@ import Rabbit from '../components/MainRabbit';
 import background from '../asset/texture.svg';
 import { LongButton } from '../components/button';
 import img from '../asset/boul.svg';
-import quemark from '../asset/quemark.svg';
+import BoulCount from '../components/BoulCount';
 
 const MainPage = () => {
   return (
@@ -18,21 +18,16 @@ const MainPage = () => {
         </SmallGray>
       </TextWrapper>
       <CountBowl>
-        <TitleWrapper>
-          <CountTitleGray>
-            보유한 그릇 (총 <CountTitleRed>10</CountTitleRed>개)
-          </CountTitleGray>
-          <QueButtonWrapper>
-            <img src={quemark} alt='button' />
-          </QueButtonWrapper>
-        </TitleWrapper>
+        <BoulCount cnt='7' />
       </CountBowl>
       <Rabbit emotion='smile' />
       <IngredientWrapper>
+        <SmallWhite>받은 재료</SmallWhite>
         <img src={img} alt='boul' />
+        <TitlePurple>7개</TitlePurple>
       </IngredientWrapper>
       <ButtonWrapper>
-        <LongButton type='button'>링크 공유하기</LongButton>
+        <ShareButton type='button'>링크 공유하기</ShareButton>
       </ButtonWrapper>
     </Container>
   );
@@ -94,37 +89,35 @@ const IngredientWrapper = styled.div`
   left: 50%;
   transform: translate(-50%);
   bottom: 140px;
+  width: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const CountBowl = styled.div`
   position: absolute;
-  margin-left: 210px;
+  margin-left: 200px;
   margin-top: 80px;
 `;
 
-const CountTitleGray = styled.h3`
+const SmallWhite = styled.p`
   font-weight: 400;
-  font-size: 14px;
-  line-height: 28px;
-
-  color: ${({ theme }) => theme.colors.gray};
+  font-size: 15px;
+  color: ${({ theme }) => theme.colors.ivory};
+  margin-bottom: 5px;
 `;
 
-const TitleWrapper = styled.div`
-  display: flex;
-`;
-
-const CountTitleRed = styled.span`
+const TitlePurple = styled.h2`
   font-weight: 400;
-  font-size: 14px;
+  font-size: 28px;
   line-height: 28px;
-  color: ${({ theme }) => theme.colors.red};
+  color: ${({ theme }) => theme.colors.purple};
+  position: absolute;
+  margin-top: 44px;
 `;
 
-const QueButtonWrapper = styled.div`
-  width: 18px;
-  height: 18px;
-  margin-left: 20px;
-  align-items: center;
-  margin-top: 2px;
+const ShareButton = styled(LongButton)`
+  background-color: ${({ theme }) => theme.colors.purple};
+  color: ${({ theme }) => theme.colors.white}; ;
 `;
