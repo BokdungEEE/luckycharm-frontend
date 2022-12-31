@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from '../asset/modal.svg';
 import styled from 'styled-components';
+import { ConfirmButton } from './button';
 
 const DescriptionModal = ({ closeModal }) => {
   return (
@@ -27,7 +28,7 @@ const DescriptionModal = ({ closeModal }) => {
               <div>남겨달라고 부탁해 보세요!</div>
             </div>
           </Text>
-          <ConfirmButton onClick={closeModal}>확인</ConfirmButton>
+          <ConfirmBtn onClick={closeModal}>확인</ConfirmBtn>
         </Content>
       </Img>
     </Container>
@@ -71,13 +72,6 @@ const Text = styled.div`
   }
   line-height: 24px;
 `;
-const ConfirmButton = styled.button`
-  width: 96px;
-  height: 42px;
-  border: 1px solid ${(props) => props.theme.colors.brown};
-  background-color: rgba(0, 0, 0, 0);
-  color: ${(props) => props.theme.colors.brown};
-  border-radius: 24px;
-  text-align: center;
+const ConfirmBtn = styled(ConfirmButton)`
   margin-top: 30px;
 `;
