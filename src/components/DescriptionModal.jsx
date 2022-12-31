@@ -8,11 +8,11 @@ const DescriptionModal = ({ closeModal }) => {
       <Img onClick={(e) => e.stopPropagation()}>
         <Content>
           <Text>
-            <p>친구에게 재료를 담아 보낼 수 있는</p>
-            <p>
+            <div>친구에게 재료를 담아 보낼 수 있는</div>
+            <div>
               <span>기본 10개의 빈 그릇</span>이 주어집니다.
-            </p>
-            <p>
+            </div>
+            <div>
               <br /> 친구들에게 재료와 메시지를
               <br />
               보낼 때마다 그릇이 소모되며,
@@ -22,10 +22,10 @@ const DescriptionModal = ({ closeModal }) => {
               받은 만큼 그릇이 충전됩니다.
               <br />
               <br />
-              <p>기본으로 주어지는 10개의 그릇을</p>
-              <p>소진했다면 친구에게 재료와 메시지를</p>
-              <p>남겨달라고 부탁해 보세요!</p>
-            </p>
+              <div>기본으로 주어지는 10개의 그릇을</div>
+              <div>소진했다면 친구에게 재료와 메시지를</div>
+              <div>남겨달라고 부탁해 보세요!</div>
+            </div>
           </Text>
           <ConfirmButton onClick={closeModal}>확인</ConfirmButton>
         </Content>
@@ -63,7 +63,7 @@ const Content = styled.div`
 const Text = styled.div`
   text-align: center;
   white-space: pre-wrap;
-  p {
+  div {
     color: ${(props) => props.theme.colors.black};
   }
   span {
