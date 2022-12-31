@@ -7,6 +7,7 @@ const DiscriptionModal = () => {
   const closeModal = () => {
     setIsOpen(false);
   };
+
   return (
     <Container>
       <Img>

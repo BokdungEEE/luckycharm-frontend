@@ -17,9 +17,11 @@ const MainRabbit = ({ text, emotion }) => {
     <ImgWrapper>
       <RabbitWrapper src={Tokki} alt='rabbit' />
       <TableWrapper src={table} alt='table' />
-      <BubbleWrapper>
-        <BubbleText>{text || '단백질이 필요해...'}</BubbleText>
-      </BubbleWrapper>
+      {!!text && (
+        <BubbleWrapper>
+          <BubbleText>{text}</BubbleText>
+        </BubbleWrapper>
+      )}
     </ImgWrapper>
   );
 };
@@ -39,7 +41,7 @@ const TableWrapper = styled.img`
 const RabbitWrapper = styled.img`
   position: absolute;
   bottom: 0px;
-  margin-bottom: 200px;
+  margin-bottom: 170px;
 `;
 
 const BubbleWrapper = styled.div`

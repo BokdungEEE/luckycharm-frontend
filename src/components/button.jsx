@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import quemark from '../asset/quemark.svg';
 
 export const IngredientButton = styled.button`
   width: 96px;
@@ -27,4 +28,8 @@ export const ConfirmButton = styled.button`
   height: 42px;
   background: none;
   color: #947e5e; /*#D0CDB5*/
+`;
+
+export const QuestionButton = styled.img`
+  src: url(${quemark});
 `;

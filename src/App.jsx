@@ -1,12 +1,13 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from './styles/GlobalStyle';
-import LoginPage from './pages/loginPage';
+import LoginPage from './pages/LoginPage';
 import KakaoLogin from './pages/KakaoLogin';
 import Select from './pages/Select';
 import Message from './pages/Message';
 import IntroPage from './pages/IntroPage';
 import SubmitPage from './pages/SubmitPage';
+import MainPage from './pages/MainPage';
 import './styles/GlobalFont.css';
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path='/select' element={<Select />} />
         <Route path='/message' element={<Message />} />
         <Route path='/submit' element={<SubmitPage />} />
+        <Route path='/' element={<MainPage />} />
       </Routes>
     </div>
   );
