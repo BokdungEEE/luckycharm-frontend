@@ -17,7 +17,7 @@ const MainRabbit = ({ text, emotion }) => {
     <ImgWrapper>
       <RabbitWrapper src={Tokki} alt='rabbit' />
       <TableWrapper src={table} alt='table' />
-      {!!text && (
+      {text && (
         <BubbleWrapper>
           <BubbleText>{text}</BubbleText>
         </BubbleWrapper>
