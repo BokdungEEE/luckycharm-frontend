@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from '../asset/modal.svg';
 import styled from 'styled-components';
 
-const DiscriptionModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
+const DescriptionModal = ({ closeModal }) => {
   return (
-    <Container>
-      <Img>
+    <Container onClick={closeModal}>
+      <Img onClick={(e) => e.stopPropagation()}>
         <Content>
           <Text>
             <p>친구에게 재료를 담아 보낼 수 있는</p>
@@ -27,8 +22,9 @@ const DiscriptionModal = () => {
               받은 만큼 그릇이 충전됩니다.
               <br />
               <br />
-              기본으로 주어지는 10개의 그릇을 소진했다면 친구에게 재료와
-              메시지를 남겨달라고 부탁해 보세요!
+              <p>기본으로 주어지는 10개의 그릇을</p>
+              <p>소진했다면 친구에게 재료와 메시지를</p>
+              <p>남겨달라고 부탁해 보세요!</p>
             </p>
           </Text>
           <ConfirmButton onClick={closeModal}>확인</ConfirmButton>
@@ -38,38 +34,50 @@ const DiscriptionModal = () => {
   );
 };
 
-export default DiscriptionModal;
+export default DescriptionModal;
 
 export const Container = styled.div`
   background-color: rgba(56, 51, 43, 0.8);
   position: absolute;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 `;
 const Img = styled.div`
   position: absolute;
-  width: 345px;
+  width: 342px;
   height: 500px;
   background-image: url(${Modal});
   padding: 42px;
 `;
 const Content = styled.div`
-  padding: 30px 20px;
+  padding: 33px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   height: 100%;
 `;
 const Text = styled.div`
   text-align: center;
   white-space: pre-wrap;
-  span {
-    color: #e9b68f;
+  p {
+    color: ${(props) => props.theme.colors.black};
   }
-  line-height: 25px;
+  span {
+    color: ${(props) => props.theme.colors.red};
+  }
+  line-height: 24px;
 `;
-const ConfirmButton = styled.button``;
+const ConfirmButton = styled.button`
+  width: 96px;
+  height: 42px;
+  border: 1px solid ${(props) => props.theme.colors.brown};
+  background-color: rgba(0, 0, 0, 0);
+  color: ${(props) => props.theme.colors.brown};
+  border-radius: 24px;
+  text-align: center;
+  margin-top: 30px;
+`;
