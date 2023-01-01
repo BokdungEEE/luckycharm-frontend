@@ -1,52 +1,59 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import Rabbit from '../components/MainRabbit';
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 import background from '../asset/texture.svg';
 import { LongButton } from '../components/button';
-import { defaultTheme } from '../styles/theme';
 import boul from '../asset/dukguk.svg';
 import kakao from '../asset/kakao.svg';
 import quemark from '../asset/quemark.svg';
 import { useParams } from 'react-router-dom';
+import DescriptionModal from '../components/DescriptionModal';
 
 const LoginPage = () => {
   const { frinedKey } = useParams();
   localStorage.setItem('friendKey', frinedKey);
   const REST_API_KEY = `${process.env.REACT_APP_KAKAO_API}`;
   const REDIRECT_URI = `${process.env.REACT_APP_REDIRECT_URI}`;
+  const [isOpen, setIsOpen] = useState(false);
+  const closeModal = () => {
+    setIsOpen(false);
+  };
   return (
-    <ThemeProvider theme={defaultTheme.colors}>
-      <Container>
-        <TextWrapper>
-          <TopWrapper>
-            <Title>카카오 로그인</Title>
-            <QueButtonWrapper>
-              <img src={quemark} alt='?' />
-            </QueButtonWrapper>
-          </TopWrapper>
-          <SmallGray>
-            떡국 재료와 메시지를 보내기 위해서는
-            <br /> 로그인이 필요합니다.
-          </SmallGray>
-        </TextWrapper>
-        <Rabbit emotion='laugh' />
-        <IngredientWrapper>
-          <img src={boul} alt='boul' />
-        </IngredientWrapper>
-        <ButtonWrapper>
-          <LoginButton type='button'>
-            <Kakao>
-              <img src={kakao} alt='log' />
-            </Kakao>
-            <KakaoLink
-              href={`https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`}
-            >
-              카카오 로그인
-            </KakaoLink>
-          </LoginButton>
-        </ButtonWrapper>
-      </Container>
-    </ThemeProvider>
+    <Container>
+      {isOpen && <DescriptionModal closeModal={closeModal} isLogin={true} />}
+      <TextWrapper>
+        <TopWrapper>
+          <Title>카카오 로그인</Title>
+          <QueButtonWrapper
+            onClick={() => {
+              setIsOpen(true);
+            }}
+          >
+            <img src={quemark} alt='?' />
+          </QueButtonWrapper>
+        </TopWrapper>
+        <SmallGray>
+          떡국 재료와 메시지를 보내기 위해서는
+          <br /> 로그인이 필요합니다.
+        </SmallGray>
+      </TextWrapper>
+      <Rabbit emotion='laugh' />
+      <IngredientWrapper>
+        <img src={boul} alt='boul' />
+      </IngredientWrapper>
+      <ButtonWrapper>
+        <LoginButton type='button'>
+          <Kakao>
+            <img src={kakao} alt='log' />
+          </Kakao>
+          <KakaoLink
+            href={`https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`}
+          >
+            카카오 로그인
+          </KakaoLink>
+        </LoginButton>
+      </ButtonWrapper>
+    </Container>
   );
 };
 export default LoginPage;

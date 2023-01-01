@@ -17,7 +17,7 @@ const MainPage = () => {
   };
   return (
     <Container>
-      {isOpen && <DescriptionModal closeModal={closeModal} />}
+      {isOpen && <DescriptionModal closeModal={closeModal} isLogin={false} />}
       <TextWrapper>
         <Title>HAPPY NEW YEAR!</Title>
         <SmallGray>
