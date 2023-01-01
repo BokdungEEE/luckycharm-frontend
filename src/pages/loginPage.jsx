@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Rabbit from '../components/MainRabbit';
 import styled, { ThemeProvider } from 'styled-components';
 import background from '../asset/texture.svg';
@@ -9,9 +9,13 @@ import kakao from '../asset/kakao.svg';
 import quemark from '../asset/quemark.svg';
 
 const LoginPage = () => {
+  // const setFriendKey = useSetRecoilState(friendKeyAtom);
+  // useEffect(() => {
+  //   const fKey = useParams();
+  //   setFriendKey(fKey);
+  // }, []);
   const REST_API_KEY = `${process.env.REACT_APP_KAKAO_API}`;
   const REDIRECT_URI = `${process.env.REACT_APP_REDIRECT_URI}`;
-
   return (
     <ThemeProvider theme={defaultTheme.colors}>
       <Container>
