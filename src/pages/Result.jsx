@@ -9,34 +9,12 @@ import ProgressBar from '../components/progressbar';
 const Result = () => {
   let readings = [
     {
-      name: '떡',
-      value: 10,
-      color: '#FFFFFF',
-    },
-    {
-      name: '파',
-      value: 30,
-      color: '#8CC638',
-    },
-    {
-      name: '김',
-      value: 10,
-      color: '#4C4B4A',
-    },
-    {
-      name: '고기',
-      value: 10,
-      color: '#84604A',
-    },
-    {
-      name: '계란',
-      value: 10,
-      color: '#FFCA43',
-    },
-    {
-      name: '물',
-      value: 20,
-      color: '#B4DCE9',
+      sea_weed: 10,
+      green_onion: 30,
+      water: 10,
+      meet: 20,
+      egg: 10,
+      rice: 20,
     },
   ];
   const navigate = useNavigate();
