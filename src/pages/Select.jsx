@@ -58,6 +58,7 @@ const ArrowImg = styled(Arrow)`
   margin-bottom: 15px;
 `;
 const Container = styled.div`
+  margin: 0 auto;
   width: 390px;
   height: 884px;
   display: flex;

@@ -4,8 +4,10 @@ import Rabbit from '../components/MainRabbit';
 import background from '../asset/texture.svg';
 import { LongButton } from '../components/button';
 import img from '../asset/unknown.svg';
+import { useNavigate } from 'react-router-dom';
 
 const IntroPage = () => {
+  const navigate = useNavigate();
   return (
     <Container>
       <TextWrapper>
@@ -23,7 +25,9 @@ const IntroPage = () => {
         <img src={img} alt='ingred' />
       </IngredientWrapper>
       <ButtonWrapper>
-        <LongButton type='button'>떡국 재료 보내기</LongButton>
+        <LongButton type='button' onClick={() => navigate('/select')}>
+          떡국 재료 보내기
+        </LongButton>
       </ButtonWrapper>
     </Container>
   );
@@ -32,6 +36,7 @@ const IntroPage = () => {
 export default IntroPage;
 
 const Container = styled.div`
+  margin: 0 auto;
   height: 844px;
   width: 390px;
   background-image: url('${background}');
