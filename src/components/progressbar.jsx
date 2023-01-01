@@ -11,7 +11,6 @@ class ProgressBar extends Component {
     const values = Object.values(parent.readings[0]);
     let bars = values.map(function (value, i) {
       let total = values.reduce((prev, curr) => prev + curr);
-
       return (
         <Bar
           style={{
@@ -37,6 +36,7 @@ const Bar = styled.div`
 
 const Progress = styled.div`
   div {
+    margin-bottom: 42px;
     &:first-child {
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;

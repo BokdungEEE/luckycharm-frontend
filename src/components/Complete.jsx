@@ -4,6 +4,28 @@ import Spoon from '../asset/spoon.svg';
 import Fork from '../asset/fork.svg';
 
 const Complete = ({ source, title, text, ingredient, color }) => {
+  const Golden = () => {
+    if (ingredient == '완벽한 떡국') {
+      return (
+        <GoldContainer>
+          친구들이 재료를 골고루 보내주어
+          <br />
+          <GoldText>
+            <GoldText textColor={color}>{ingredient}</GoldText>이 완성되었어요!
+          </GoldText>
+        </GoldContainer>
+      );
+    } else {
+      return (
+        <IngredientContainer>
+          <IngredientText>
+            친구들이 가장 많이 보내준 재료는 바로&nbsp;
+          </IngredientText>
+          <IngredientText textColor={color}>{ingredient}</IngredientText>
+        </IngredientContainer>
+      );
+    }
+  };
   return (
     <Container>
       <ContentContainer>
@@ -11,12 +33,7 @@ const Complete = ({ source, title, text, ingredient, color }) => {
           <Title>내 떡국은&nbsp;</Title>
           <Title textColor={color}>{title}</Title>
         </TitleContainer>
-        <IngredientContainer>
-          <IngredientText>
-            친구들이 가장 많이 보내준 재료는 바로&nbsp;
-          </IngredientText>
-          <IngredientText textColor={color}>{ingredient}</IngredientText>
-        </IngredientContainer>
+        {Golden()}
         {text}
         <IngredientText>
           친구들이 보내준 재료들을 클릭하여
@@ -63,7 +80,18 @@ const IngredientContainer = styled.div`
   display: flex;
 `;
 
+const GoldContainer = styled.div`
+  flex-direction: column;
+`;
+
 const IngredientText = styled.div`
+  font-weight: 400;
+  font-size: 16px;
+  color: ${(props) => props?.textColor};
+`;
+
+const GoldText = styled.div`
+  display: flex;
   font-weight: 400;
   font-size: 16px;
   color: ${(props) => props?.textColor};
