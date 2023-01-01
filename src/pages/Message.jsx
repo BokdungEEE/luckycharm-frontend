@@ -3,11 +3,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { ReactComponent as Arrow } from '../asset/arrow.svg';
 import styled from 'styled-components';
 import { LongButton } from '../components/button';
+import { sendMessage } from '../api/message';
 
 const Message = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { img, ingredient } = location.state.selectedData;
+  const { img, text } = location.state.selectedData;
   const [nickname, setNickname] = useState('');
   const [content, setContent] = useState('');
   const handleNickName = (e) => {
@@ -19,10 +20,11 @@ const Message = () => {
 
   const handleSubmit = () => {
     const submitObj = {
-      ingredient,
+      ingredient: text,
       nickname,
       content,
     };
+    sendMessage(submitObj);
     navigate('/submit', {
       state: {
         img: img,

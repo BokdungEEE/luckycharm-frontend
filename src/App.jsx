@@ -16,7 +16,7 @@ const App = () => {
     <div>
       <GlobalStyle />
       <Routes>
-        <Route path='/flogin' element={<LoginPage />} />
+        <Route path='/flogin/:frinedKey' element={<LoginPage />} />
         <Route path='/intro' element={<IntroPage />} />
         <Route path='/oauth' element={<KakaoLogin />} />
         <Route path='/select' element={<Select />} />
