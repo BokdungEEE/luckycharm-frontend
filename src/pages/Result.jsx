@@ -57,9 +57,9 @@ const Result = () => {
 
   return (
     <Container>
-      <Wrapper>
+      <TopWrapper>
         <ArrowImg onClick={goBack} />
-      </Wrapper>
+      </TopWrapper>
       <ResultContainer>
         <Soup readings={readings} />
       </ResultContainer>
@@ -72,28 +72,28 @@ const Result = () => {
 };
 
 const Container = styled.div`
-  width: 390px;
-  height: 982px;
   display: flex;
+  width: 390px;
+  margin: 0 auto;
   flex-direction: column;
   align-items: center;
   background-color: ${(props) => props.theme.colors.brown};
 `;
 
-const Wrapper = styled.div`
-  align-self: flex-start;
-  margin-top: 49px;
-  margin-left: 33px;
-  width: 26px;
-  height: 26px;
+const TopWrapper = styled.div`
+  position: fixed;
+  background-color: ${(props) => props.theme.colors.brown};
+  width: 390px;
+  height: 80px;
 `;
 const ArrowImg = styled(Arrow)`
-  width: 26px;
-  height: 26px;
+  margin-top: 49px;
+  margin-left: 33px;
 `;
 
 const ResultContainer = styled.div`
   width: 390px;
+  margin-top: 80px;
 `;
 
 const ReceivedIngredient = styled.div`
