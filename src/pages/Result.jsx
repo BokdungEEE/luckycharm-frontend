@@ -5,13 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import Soup from '../components/Soup';
 import ProgressBar from '../components/progressbar';
 import Received from '../components/received';
-import ReceivedEgg from '../asset/receivedegg.svg';
-import ReceivedGreenonion from '../asset/receivedgreenonion.svg';
-import ReceivedMeat from '../asset/receivedmeat.svg';
-import ReceivedRice from '../asset/receivedricecake.svg';
-import ReceivedWater from '../asset/receivedwater.svg';
-import ReceivedSeaweed from '../asset/receivedseaweed.svg';
-import { defaultTheme } from '../styles/theme';
 
 const Result = () => {
   let readings = [
@@ -19,7 +12,7 @@ const Result = () => {
       rice: 30,
       green_onion: 30,
       sea_weed: 30,
-      meat: 30,
+      meat: 300,
       egg: 30,
       water: 30,
     },
@@ -72,63 +65,7 @@ const Result = () => {
       </ResultContainer>
       <ProgressBar readings={readings} height={20} />
       <ReceivedIngredient>
-        {sample.map((data, index) => {
-          if (data.ingredient == 'egg') {
-            return (
-              <Received
-                key={index}
-                source={ReceivedEgg}
-                color={defaultTheme.colors.egg}
-                name={data.nickname}
-              />
-            );
-          } else if (data.ingredient == 'green_onion') {
-            return (
-              <Received
-                key={index}
-                source={ReceivedGreenonion}
-                color={defaultTheme.colors.greenonion}
-                name={data.nickname}
-              />
-            );
-          } else if (data.ingredient == 'meat') {
-            return (
-              <Received
-                key={index}
-                source={ReceivedMeat}
-                color={defaultTheme.colors.meat}
-                name={data.nickname}
-              />
-            );
-          } else if (data.ingredient == 'rice') {
-            return (
-              <Received
-                key={index}
-                source={ReceivedRice}
-                color={defaultTheme.colors.white}
-                name={data.nickname}
-              />
-            );
-          } else if (data.ingredient == 'water') {
-            return (
-              <Received
-                key={index}
-                source={ReceivedWater}
-                color={defaultTheme.colors.water}
-                name={data.nickname}
-              />
-            );
-          } else if (data.ingredient == 'sea_weed') {
-            return (
-              <Received
-                key={index}
-                source={ReceivedSeaweed}
-                color={defaultTheme.colors.seaweed}
-                name={data.nickname}
-              />
-            );
-          }
-        })}
+        <Received readings={sample} />
       </ReceivedIngredient>
     </Container>
   );
@@ -140,7 +77,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #947e5e;
+  background-color: ${(props) => props.theme.colors.brown};
 `;
 
 const Wrapper = styled.div`
