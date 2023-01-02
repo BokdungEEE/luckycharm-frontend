@@ -10,6 +10,7 @@ import SubmitPage from './pages/SubmitPage';
 import MainPage from './pages/MainPage';
 import './styles/GlobalFont.css';
 import MyLoginPage from './pages/MyLoginPage';
+import Result from './pages/Result';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='/submit' element={<SubmitPage />} />
         <Route path='/' element={<MainPage />} />
         <Route path='/login' element={<MyLoginPage />} />
+        <Route path='/result' element={<Result />} />
       </Routes>
     </div>
   );
