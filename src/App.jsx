@@ -8,19 +8,24 @@ import Message from './pages/Message';
 import IntroPage from './pages/IntroPage';
 import SubmitPage from './pages/SubmitPage';
 import Result from './pages/Result';
+import MainPage from './pages/MainPage';
+import './styles/GlobalFont.css';
+import MyLoginPage from './pages/MyLoginPage';
 
 const App = () => {
   return (
     <div>
       <GlobalStyle />
       <Routes>
-        <Route path='/login' element={<LoginPage />} />
+        <Route path='/flogin' element={<LoginPage />} />
         <Route path='/intro' element={<IntroPage />} />
         <Route path='/oauth' element={<KakaoLogin />} />
         <Route path='/select' element={<Select />} />
         <Route path='/message' element={<Message />} />
         <Route path='/submit' element={<SubmitPage />} />
         <Route path='/result' element={<Result />} />
+        <Route path='/' element={<MainPage />} />
+        <Route path='/login' element={<MyLoginPage />} />
       </Routes>
     </div>
   );

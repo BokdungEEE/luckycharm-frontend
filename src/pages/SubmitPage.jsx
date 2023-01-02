@@ -4,9 +4,10 @@ import Rabbit from '../components/MainRabbit';
 import background from '../asset/texture.svg';
 import { LongButton } from '../components/button';
 import { defaultTheme } from '../styles/theme';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const SubmitPage = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const state = location.state;
   const img = state.img;
@@ -17,7 +18,7 @@ const SubmitPage = () => {
           <Title>THANK YOU!</Title>
           <SmallGray>
             떡국 재료와 메시지를 보내주어 고마워요!
-            <br /> 새해 복 가득 받으세요.
+            <br /> 새해 복 가득 받으세요 :)
           </SmallGray>
         </TextWrapper>
         <Rabbit emotion='laugh' text='보내줘서 고마워!' />
@@ -25,7 +26,9 @@ const SubmitPage = () => {
           <img src={img} alt='ingred' />
         </IngredientWrapper>
         <ButtonWrapper>
-          <LongButton type='button'>내 페이지로 가기</LongButton>
+          <LouteButton type='button' onClick={() => navigate('/')}>
+            내 페이지로 가기
+          </LouteButton>
         </ButtonWrapper>
       </Container>
     </ThemeProvider>
@@ -34,6 +37,7 @@ const SubmitPage = () => {
 export default SubmitPage;
 
 const Container = styled.div`
+  margin: 0 auto;
   height: 844px;
   width: 390px;
   background-image: url('${background}');
@@ -80,4 +84,10 @@ const IngredientWrapper = styled.div`
   left: 50%;
   transform: translate(-50%);
   bottom: 120px;
+`;
+
+const LouteButton = styled(LongButton)`
+  background-color: ${({ theme }) => theme.colors.purple};
+  color: ${({ theme }) => theme.colors.white};
+  padding-top: 5px;
 `;

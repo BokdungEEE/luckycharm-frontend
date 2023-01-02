@@ -20,10 +20,10 @@ export const LongButton = styled.button`
 `;
 
 export const ConfirmButton = styled.button`
-  border: 1px solid #947e5e; /*#D0CDB5*/
+  border: 1px solid ${(props) => props.theme.colors.brown};
   border-radius: 24px;
   width: 96px;
   height: 42px;
-  background: none;
-  color: #947e5e; /*#D0CDB5*/
+  background-color: rgba(0, 0, 0, 0);
+  color: ${(props) => props.theme.colors.brown};
 `;
