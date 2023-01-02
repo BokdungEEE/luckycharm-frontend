@@ -7,10 +7,10 @@ import Select from './pages/Select';
 import Message from './pages/Message';
 import IntroPage from './pages/IntroPage';
 import SubmitPage from './pages/SubmitPage';
-import Result from './pages/Result';
 import MainPage from './pages/MainPage';
 import './styles/GlobalFont.css';
 import MyLoginPage from './pages/MyLoginPage';
+import Result from './pages/Result';
 
 const App = () => {
   return (
@@ -23,9 +23,9 @@ const App = () => {
         <Route path='/select' element={<Select />} />
         <Route path='/message' element={<Message />} />
         <Route path='/submit' element={<SubmitPage />} />
-        <Route path='/result' element={<Result />} />
         <Route path='/' element={<MainPage />} />
         <Route path='/login' element={<MyLoginPage />} />
+        <Route path='/result' element={<Result />} />
       </Routes>
     </div>
   );
