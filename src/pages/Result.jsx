@@ -32,7 +32,7 @@ const Result = () => {
     },
     {
       ingredient: 'egg',
-      nickname: '가나다라마바사아자차카',
+      nickname: '가나다라마바사',
       message: '새복많',
     },
     {
@@ -50,6 +50,11 @@ const Result = () => {
       nickname: '박땡땡',
       message: '새복많',
     },
+    {
+      ingredient: 'green_onion',
+      nickname: '박땡땡',
+      message: '새복많',
+    },
   ];
 
   const navigate = useNavigate();
@@ -59,7 +64,9 @@ const Result = () => {
 
   return (
     <Container>
-      <ArrowImg onClick={goBack} />
+      <Wrapper>
+        <ArrowImg onClick={goBack} />
+      </Wrapper>
       <ResultContainer>
         <Soup readings={readings} />
       </ResultContainer>
@@ -136,10 +143,16 @@ const Container = styled.div`
   background-color: #947e5e;
 `;
 
-const ArrowImg = styled(Arrow)`
+const Wrapper = styled.div`
   align-self: flex-start;
-  /* margin-top: 49px; */
+  margin-top: 49px;
   margin-left: 33px;
+  width: 26px;
+  height: 26px;
+`;
+const ArrowImg = styled(Arrow)`
+  width: 26px;
+  height: 26px;
 `;
 
 const ResultContainer = styled.div`
