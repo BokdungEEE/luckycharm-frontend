@@ -20,8 +20,8 @@ const Container = styled.div`
 `;
 
 const ReceivedImg = styled.img`
-  width: 100px;
-  height: 76px;
+  width: 112px;
+  height: 112px;
 `;
 const NameTag = styled.div`
   width: 112px;
