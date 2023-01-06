@@ -77,7 +77,7 @@ const Soup = (props) => {
     return (
       <Complete
         source={GoldenRatio}
-        color={'#F3D666'}
+        color={'F3D666'}
         title={'황금비율 떡국'}
         text={'2023년은 완벽한 한 해가 되겠는걸요?'}
         ingredient={'완벽한 떡국'}
