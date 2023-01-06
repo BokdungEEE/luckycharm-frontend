@@ -6,12 +6,9 @@ import { LongButton } from '../components/button';
 import boul from '../asset/dukguk.svg';
 import kakao from '../asset/kakao.svg';
 import quemark from '../asset/quemark.svg';
-import { useParams } from 'react-router-dom';
 import DescriptionModal from '../components/DescriptionModal';
 
 const LoginPage = () => {
-  const { frinedKey } = useParams();
-  localStorage.setItem('friendKey', frinedKey);
   const REST_API_KEY = `${process.env.REACT_APP_KAKAO_API}`;
   const REDIRECT_URI = `${process.env.REACT_APP_REDIRECT_URI}`;
   const [isOpen, setIsOpen] = useState(false);

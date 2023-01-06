@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Rabbit from '../components/MainRabbit';
 import background from '../asset/texture.svg';
 import { LongButton } from '../components/button';
 import img from '../asset/unknown.svg';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { AccessTokenKey, FriendKey } from '../consts/LocalStorageKey';
 
 const IntroPage = () => {
+  const [isLogin, setIsLogin] = useState(false);
+  const { frinedKey } = useParams();
   const navigate = useNavigate();
+
+  localStorage.setItem(FriendKey, frinedKey);
+  useEffect(() => {
+    if (localStorage.getItem(AccessTokenKey)) setIsLogin(true);
+    else setIsLogin(false);
+  }, [isLogin]);
+
+  const handleNavigate = () => {
+    if (isLogin) navigate('/select');
+    else navigate('/flogin');
+  };
   return (
     <Container>
       <TextWrapper>
@@ -25,7 +40,7 @@ const IntroPage = () => {
         <img src={img} alt='ingred' />
       </IngredientWrapper>
       <ButtonWrapper>
-        <LongButton type='button' onClick={() => navigate('/select')}>
+        <LongButton type='button' onClick={handleNavigate}>
           떡국 재료 보내기
         </LongButton>
       </ButtonWrapper>

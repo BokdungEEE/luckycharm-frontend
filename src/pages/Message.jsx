@@ -4,6 +4,7 @@ import { ReactComponent as Arrow } from '../asset/arrow.svg';
 import styled from 'styled-components';
 import { LongButton } from '../components/button';
 import { sendMessage } from '../api/message';
+import { SelectedIngredientImgKey } from '../consts/LocalStorageKey';
 
 const Message = () => {
   const location = useLocation();
@@ -21,17 +22,12 @@ const Message = () => {
   const handleSubmit = () => {
     const submitObj = {
       ingredient: text,
-      nickname,
+      nickName: nickname,
       content,
     };
+    localStorage.setItem(SelectedIngredientImgKey, img);
     sendMessage(submitObj);
-    navigate('/submit', {
-      state: {
-        img: img,
-      },
-    });
-
-    console.log(submitObj);
+    navigate('/submit');
   };
 
   const goBack = () => {

@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import Rabbit from '../components/MainRabbit';
 import background from '../asset/texture.svg';
 import { LongButton } from '../components/button';
 import { defaultTheme } from '../styles/theme';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { SelectedIngredientImgKey } from '../consts/LocalStorageKey';
 
 const SubmitPage = () => {
+  useEffect(() => {
+    const preventGoBack = () => {
+      history.pushState(null, '', location.href);
+    };
+    history.pushState(null, '', location.href);
+    window.addEventListener('popstate', preventGoBack);
+    return () => {
+      window.removeEventListener('popstate', preventGoBack);
+    };
+  }, []);
   const navigate = useNavigate();
-  const location = useLocation();
-  const state = location.state;
-  const img = state.img;
+  const img = localStorage.getItem(SelectedIngredientImgKey);
   return (
     <ThemeProvider theme={defaultTheme.colors}>
       <Container>

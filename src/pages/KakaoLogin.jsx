@@ -2,15 +2,17 @@ import React from 'react';
 import { login } from '../api/login';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { FriendKey } from '../consts/LocalStorageKey';
 
 const KakaoLogin = () => {
   const navigate = useNavigate();
   const params = new URL(window.location.href).searchParams;
   const code = params.get('code');
   useEffect(() => {
-    //code로 login api
-    if (localStorage.getItem('friendKey')) {
-      navigate('/intro');
+    const friendKey = localStorage.getItem(FriendKey);
+    login(code);
+    if (friendKey) {
+      navigate(`/select/${friendKey}`);
     } else {
       navigate('/');
     }

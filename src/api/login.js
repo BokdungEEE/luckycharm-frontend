@@ -1,9 +1,13 @@
+import { AccessTokenKey } from '../consts/LocalStorageKey';
 import { Axios } from '../lib/Axios';
 
 export const login = async (code) => {
-  Axios.defaults.withCredentials = true;
-  const res = await Axios.post(`/oauth?code=${code}`);
-  const { accessToken } = res;
-  localStorage.setItem('accessToken', accessToken);
-  return res;
+  try {
+    const res = await Axios(`/oauth?code=${code}`);
+    const { accessToken } = res.data.data;
+    Axios.defaults.headers.Authorization = `Bearer ${accessToken}`;
+    localStorage.setItem(AccessTokenKey, accessToken);
+  } catch (e) {
+    console.log(e);
+  }
 };

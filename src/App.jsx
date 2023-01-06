@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from './styles/GlobalStyle';
-import LoginPage from './pages/loginPage';
+import LoginPage from './pages/LoginPage';
 import KakaoLogin from './pages/KakaoLogin';
 import Select from './pages/Select';
 import Message from './pages/Message';
@@ -16,8 +16,8 @@ const App = () => {
     <div>
       <GlobalStyle />
       <Routes>
-        <Route path='/flogin/:frinedKey' element={<LoginPage />} />
-        <Route path='/intro' element={<IntroPage />} />
+        <Route path='/flogin' element={<LoginPage />} />
+        <Route path='/intro/:frinedKey' element={<IntroPage />} />
         <Route path='/oauth' element={<KakaoLogin />} />
         <Route path='/select' element={<Select />} />
         <Route path='/message' element={<Message />} />
