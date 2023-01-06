@@ -25,7 +25,7 @@ const Soup = (props) => {
       title: '쫄깃쫄깃 떡국',
       ingredient: '떡!',
       text: '2023년에는 쫄깃쫄깃 즐거운 일들이 가득할거에요',
-      color: '#FFFFFF',
+      color: defaultTheme.colors.white,
     },
     {
       id: 'sea_weed',
@@ -33,7 +33,7 @@ const Soup = (props) => {
       title: '짭쪼름 떡국',
       ingredient: '김!',
       text: '2023년에는 짭짤한 수입이 많겠는데요?',
-      color: '#4C4B4A',
+      color: defaultTheme.colors.seaweed,
     },
     {
       id: 'meat',
@@ -41,7 +41,7 @@ const Soup = (props) => {
       title: '단백질 떡국',
       ingredient: '고기!',
       text: '2023년에는 아프지않고 건강! 튼튼!한 한 해가 될 거예요',
-      color: '#84604A',
+      color: defaultTheme.colors.meat,
     },
     {
       id: 'egg',
@@ -49,7 +49,7 @@ const Soup = (props) => {
       title: '보들보들 떡국',
       ingredient: '계란!',
       text: '2023년에는 모든 일이 부드럽고 순조롭게 진행될 거예요',
-      color: '#FFCA43',
+      color: defaultTheme.colors.egg,
     },
     {
       id: 'water',
@@ -57,15 +57,7 @@ const Soup = (props) => {
       title: '한강 떡국',
       ingredient: '물!',
       text: '2023년에는 모든 일이 강물처럼 시원하게 잘될 거예요',
-      color: '#B4DCE9',
-    },
-    {
-      id: 'gold',
-      img: GoldenRatio,
-      title: '황금비율 떡국',
-      ingredient: '완벽한 떡국',
-      text: '2023년은 완벽한 한 해가 되겠는걸요?',
-      color: '#F3D666',
+      color: defaultTheme.colors.water,
     },
   ];
 
@@ -86,7 +78,7 @@ const Soup = (props) => {
     return (
       <Complete
         source={GoldenRatio}
-        color={'#F3D666'}
+        color={defaultTheme.colors.yellow}
         title={'황금비율 떡국'}
         text={'2023년은 완벽한 한 해가 되겠는걸요?'}
         ingredient={'완벽한 떡국'}

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 const Golden = (props) => {
   const parent = props.readings;
-  if (props.ingredient == '완벽한 떡국') {
+  if (parent.ingredient == '완벽한 떡국') {
     return (
       <GoldContainer>
         친구들이 재료를 골고루 보내주어
@@ -38,7 +38,7 @@ const GoldText = styled.div`
   display: flex;
   font-weight: 400;
   font-size: 16px;
-  color: ${(props) => props?.textColor};
+  color: ${(props) => props.textColor};
 `;
 
 const IngredientText = styled.div`
