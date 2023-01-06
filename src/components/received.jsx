@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { defaultTheme } from '../styles/theme';
+import styled, { css } from 'styled-components';
 
 import ReceivedEgg from '../asset/receivedegg.svg';
 import ReceivedGreenonion from '../asset/receivedgreenonion.svg';
@@ -17,52 +16,42 @@ const Received = (props) => {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedEgg} />
-          <NameTag textColor={defaultTheme.colors.egg}>{data.nickname}</NameTag>
+          <NameTag textColor='egg'>{data.nickname}</NameTag>
         </Container>
       );
     } else if (data.ingredient == 'green_onion') {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedGreenonion} />
-          <NameTag textColor={defaultTheme.colors.greenonion}>
-            {data.nickname}
-          </NameTag>
+          <NameTag textColor='greenonion'>{data.nickname}</NameTag>
         </Container>
       );
     } else if (data.ingredient == 'meat') {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedMeat} />
-          <NameTag textColor={defaultTheme.colors.meat}>
-            {data.nickname}
-          </NameTag>
+          <NameTag textColor='meat'>{data.nickname}</NameTag>
         </Container>
       );
     } else if (data.ingredient == 'rice') {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedRice} />
-          <NameTag textColor={defaultTheme.colors.white}>
-            {data.nickname}
-          </NameTag>
+          <NameTag textColor='white'>{data.nickname}</NameTag>
         </Container>
       );
     } else if (data.ingredient == 'water') {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedWater} />
-          <NameTag textColor={defaultTheme.colors.water}>
-            {data.nickname}
-          </NameTag>
+          <NameTag textColor='water'>{data.nickname}</NameTag>
         </Container>
       );
     } else if (data.ingredient == 'sea_weed') {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedSeaweed} />
-          <NameTag textColor={defaultTheme.colors.seaweed}>
-            {data.nickname}
-          </NameTag>
+          <NameTag textColor='seaweed'>{data.nickname}</NameTag>
         </Container>
       );
     }
@@ -89,6 +78,38 @@ const NameTag = styled.div`
   line-height: 24px;
   text-align: center;
   color: ${(props) => props.textColor};
+  ${({ textColor, theme }) => {
+    if (textColor === 'egg') {
+      return css`
+        color: ${theme.colors.egg};
+      `;
+    }
+    if (textColor === 'greenonion') {
+      return css`
+        color: ${theme.colors.greenonion};
+      `;
+    }
+    if (textColor === 'meat') {
+      return css`
+        color: ${theme.colors.meat};
+      `;
+    }
+    if (textColor === 'rice') {
+      return css`
+        color: ${theme.colors.white};
+      `;
+    }
+    if (textColor === 'water') {
+      return css`
+        color: ${theme.colors.water};
+      `;
+    }
+    if (textColor === 'seaweed') {
+      return css`
+        color: ${theme.colors.seaweed};
+      `;
+    }
+  }}
 `;
 
 export default Received;

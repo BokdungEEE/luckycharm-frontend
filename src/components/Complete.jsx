@@ -38,7 +38,7 @@ const ContentContainer = styled.div`
   margin-top: 15px;
   margin-left: 22px;
   line-height: 24px;
-  color: ${(props) => props.textColor || '#d0cdb5'};
+  color: ${(props) => props.textColor || props.theme.colors.beige};
 `;
 
 const TitleContainer = styled.div`
@@ -52,13 +52,13 @@ const Title = styled.div`
   font-weight: 400;
   line-height: 36px;
   font-size: 32px;
-  color: ${(props) => props.textColor || '#eeeccd'};
+  color: ${(props) => props.textColor || props.theme.colors.ivory};
 `;
 
 const IngredientText = styled.div`
   font-weight: 400;
   font-size: 16px;
-  color: ${(props) => props?.textColor};
+  color: ${(props) => props.textColor};
 `;
 
 const ImageContainer = styled.div`
