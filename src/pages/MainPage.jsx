@@ -6,14 +6,37 @@ import { LongButton } from '../components/button';
 import img from '../asset/boul.svg';
 import BoulCount from '../components/BoulCount';
 import DescriptionModal from '../components/DescriptionModal';
+import server from '../api/service';
+import { useCallback } from 'react';
+import { useEffect } from 'react';
+import Toast from '../components/Toast';
 
 const MainPage = () => {
+  const [toast, setToast] = useState(false);
+
+  const [data, setData] = useState();
+
+  const beforeRoadMyPages = useCallback(async () => {
+    const { data } = await server.beforeRoadMyPage();
+    //console.log(data);
+    setData(data.data);
+  }, []);
+
+  useEffect(() => {
+    beforeRoadMyPages();
+  }, []);
+
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => {
     setIsOpen(true);
   };
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const copyUrl = async () => {
+    await navigator.clipboard.writeText(data.myLink);
+    setToast(true);
   };
   return (
     <Container>
@@ -27,16 +50,19 @@ const MainPage = () => {
         </SmallGray>
       </TextWrapper>
       <CountBowl>
-        <BoulCount cnt='7' openModal={openModal} />
+        <BoulCount cnt={data.plateCnt} openModal={openModal} />
       </CountBowl>
       <Rabbit emotion='smile' />
       <IngredientWrapper>
         <SmallWhite>받은 재료</SmallWhite>
         <img src={img} alt='boul' />
-        <TitlePurple>7개</TitlePurple>
+        <TitlePurple>{data.ingredientCnt}개</TitlePurple>
       </IngredientWrapper>
       <ButtonWrapper>
-        <ShareButton type='button'>링크 공유하기</ShareButton>
+        <ShareButton type='button' onClick={copyUrl}>
+          링크 공유하기
+        </ShareButton>
+        {toast && <Toast setToast={setToast} text='URL이 복사되었습니다.' />}
       </ButtonWrapper>
     </Container>
   );
