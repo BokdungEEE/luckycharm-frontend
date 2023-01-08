@@ -32,6 +32,7 @@ const IntroPage = () => {
 export default IntroPage;
 
 const Container = styled.div`
+  margin: 0 auto;
   height: 844px;
   width: 390px;
   background-image: url('${background}');
