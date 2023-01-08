@@ -6,8 +6,24 @@ import { LongButton } from '../components/button';
 import img from '../asset/boul.svg';
 import BoulCount from '../components/BoulCount';
 import DescriptionModal from '../components/DescriptionModal';
+import server from '../api/service';
+import { useCallback } from 'react';
+import { async } from 'q';
+import { useEffect } from 'react';
 
 const MainPage = () => {
+  const [data, setData] = useState();
+
+  const beforeRoadMyPages = useCallback(async () => {
+    const { data } = await server.beforeRoadMyPage();
+    console.log(data);
+    setData(data);
+  }, []);
+
+  useEffect(() => {
+    beforeRoadMyPages();
+  }, []);
+
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => {
     setIsOpen(true);
