@@ -6,17 +6,12 @@ import Soup from '../components/Soup';
 import ProgressBar from '../components/progressbar';
 import Received from '../components/received';
 
+// import { getReceived } from '../api/received';
+
 const Result = () => {
-  let readings = [
-    {
-      rice: 30,
-      green_onion: 30,
-      sea_weed: 30,
-      meat: 300,
-      egg: 30,
-      water: 30,
-    },
-  ];
+  // console.log(getReceived());
+  // console.log(Object.keys(promise));
+
   const sample = [
     {
       ingredient: 'rice',
@@ -39,16 +34,18 @@ const Result = () => {
       message: '새복많',
     },
     {
-      ingredient: 'sea_weed',
+      ingredient: 'seaWeed',
       nickname: '박땡땡',
       message: '새복많',
     },
     {
-      ingredient: 'green_onion',
+      ingredient: 'greenOnion',
       nickname: '박땡땡',
       message: '새복많',
     },
   ];
+
+  // console.log(getReceived());
 
   const navigate = useNavigate();
   const goBack = () => {
@@ -61,9 +58,9 @@ const Result = () => {
         <ArrowImg onClick={goBack} />
       </TopWrapper>
       <ResultContainer>
-        <Soup readings={readings} />
+        <Soup />
       </ResultContainer>
-      <ProgressBar readings={readings} height={20} />
+      <ProgressBar height={20} />
       <ReceivedIngredient>
         <Received readings={sample} />
       </ReceivedIngredient>

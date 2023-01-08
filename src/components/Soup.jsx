@@ -7,8 +7,9 @@ import LotSeaweed from '../asset/lotseaweed.svg';
 import LotWater from '../asset/lotwater.svg';
 import GoldenRatio from '../asset/golden.svg';
 import Complete from './Complete';
+import { getProgress } from '../api/progress';
 
-const Soup = (props) => {
+const Soup = () => {
   const soups = [
     {
       id: 'greenOnion',
@@ -59,48 +60,51 @@ const Soup = (props) => {
       color: '#B4DCE9',
     },
   ];
+  const getSoup = async () => {
+    const soupData = await getProgress();
+    const values = Object.values(soupData);
+    const temp = values[0];
 
-  const myobject = props.readings[0];
-  const values = Object.values(props.readings[0]);
-  const temp = values[0];
-  let map = new Map(Object.entries(myobject));
+    let map = new Map(Object.entries(soupData));
 
-  const most = [...map.entries()].reduce((a, b) => (a[1] > b[1] ? a : b))[0];
+    const most = [...map.entries()].reduce((a, b) => (a[1] > b[1] ? a : b))[0];
 
-  if (
-    values[1] === temp &&
-    values[2] === temp &&
-    values[3] === temp &&
-    values[4] === temp &&
-    values[5] === temp
-  ) {
-    return (
-      <Complete
-        source={GoldenRatio}
-        color={'#F3D666'}
-        title={'황금비율 떡국'}
-        text={'2023년은 완벽한 한 해가 되겠는걸요?'}
-        ingredient={'완벽한 떡국'}
-      />
-    );
-  } else {
-    return (
-      <div>
-        {soups
-          .filter((soup) => soup.id === most)
-          .map((soup, i) => (
-            <Complete
-              key={i}
-              source={soup.img}
-              color={soup.color}
-              title={soup.title}
-              text={soup.text}
-              ingredient={soup.ingredient}
-            />
-          ))}
-      </div>
-    );
-  }
+    if (
+      values[1] === temp &&
+      values[2] === temp &&
+      values[3] === temp &&
+      values[4] === temp &&
+      values[5] === temp
+    ) {
+      return (
+        <Complete
+          source={GoldenRatio}
+          color={'#F3D666'}
+          title={'황금비율 떡국'}
+          text={'2023년은 완벽한 한 해가 되겠는걸요?'}
+          ingredient={'완벽한 떡국'}
+        />
+      );
+    } else {
+      return (
+        <div>
+          {soups
+            .filter((soup) => soup.id === most)
+            .map((soup, i) => (
+              <Complete
+                key={i}
+                source={soup.img}
+                color={soup.color}
+                title={soup.title}
+                text={soup.text}
+                ingredient={soup.ingredient}
+              />
+            ))}
+        </div>
+      );
+    }
+  };
+  getSoup();
 };
 
 export default Soup;
