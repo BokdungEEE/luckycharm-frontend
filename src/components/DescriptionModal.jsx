@@ -1,23 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from '../asset/modal.svg';
 import styled from 'styled-components';
+import { ConfirmButton } from './button';
 
-const DiscriptionModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
+const DescriptionModal = ({ closeModal }) => {
   return (
-    <Container>
-      <Img>
+    <Container onClick={closeModal}>
+      <Img onClick={(e) => e.stopPropagation()}>
         <Content>
           <Text>
-            <p>친구에게 재료를 담아 보낼 수 있는</p>
-            <p>
+            <div>친구에게 재료를 담아 보낼 수 있는</div>
+            <div>
               <span>기본 10개의 빈 그릇</span>이 주어집니다.
-            </p>
-            <p>
+            </div>
+            <div>
               <br /> 친구들에게 재료와 메시지를
               <br />
               보낼 때마다 그릇이 소모되며,
@@ -27,49 +23,55 @@ const DiscriptionModal = () => {
               받은 만큼 그릇이 충전됩니다.
               <br />
               <br />
-              기본으로 주어지는 10개의 그릇을 소진했다면 친구에게 재료와
-              메시지를 남겨달라고 부탁해 보세요!
-            </p>
+              <div>기본으로 주어지는 10개의 그릇을</div>
+              <div>소진했다면 친구에게 재료와 메시지를</div>
+              <div>남겨달라고 부탁해 보세요!</div>
+            </div>
           </Text>
-          <ConfirmButton onClick={closeModal}>확인</ConfirmButton>
+          <ConfirmBtn onClick={closeModal}>확인</ConfirmBtn>
         </Content>
       </Img>
     </Container>
   );
 };
 
-export default DiscriptionModal;
+export default DescriptionModal;
 
 export const Container = styled.div`
   background-color: rgba(56, 51, 43, 0.8);
   position: absolute;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 `;
 const Img = styled.div`
   position: absolute;
-  width: 345px;
+  width: 342px;
   height: 500px;
   background-image: url(${Modal});
   padding: 42px;
 `;
 const Content = styled.div`
-  padding: 30px 20px;
+  padding: 33px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   height: 100%;
 `;
 const Text = styled.div`
   text-align: center;
   white-space: pre-wrap;
-  span {
-    color: #e9b68f;
+  div {
+    color: ${(props) => props.theme.colors.black};
   }
-  line-height: 25px;
+  span {
+    color: ${(props) => props.theme.colors.red};
+  }
+  line-height: 24px;
 `;
-const ConfirmButton = styled.button``;
+const ConfirmBtn = styled(ConfirmButton)`
+  margin-top: 30px;
+`;

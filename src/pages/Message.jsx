@@ -68,6 +68,7 @@ const Message = () => {
 export default Message;
 
 const Container = styled.div`
+  margin: 0 auto;
   padding: 50px 24px;
   display: flex;
   flex-direction: column;

@@ -4,18 +4,13 @@ import basic from '../asset/basic.svg';
 import none from '../asset/none.svg';
 import plus from '../asset/plus.svg';
 import quemark from '../asset/quemark.svg';
-import React, { useState } from 'react';
-import DiscriptionModal from './DiscriptionModal';
+import React from 'react';
 
-const BoulCount = ({ cnt }) => {
+const BoulCount = ({ cnt, openModal }) => {
   const Boul = {
     none,
     plus,
     basic,
-  };
-  const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => {
-    setIsOpen(true);
   };
 
   const BoulList = [];
@@ -43,7 +38,6 @@ const BoulCount = ({ cnt }) => {
         <QueButtonWrapper>
           <img src={quemark} alt='button' onClick={openModal} />
         </QueButtonWrapper>
-        {isOpen && <DiscriptionModal setIsOpen={setIsOpen} />}
       </TitleWrapper>
       <Border>
         {BoulList.map((svg, index) => (

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Rabbit from '../components/MainRabbit';
 import styled, { ThemeProvider } from 'styled-components';
 import background from '../asset/texture.svg';
@@ -8,30 +8,29 @@ import boul from '../asset/dukguk.svg';
 import kakao from '../asset/kakao.svg';
 import quemark from '../asset/quemark.svg';
 
-const LoginPage = () => {
-  // const setFriendKey = useSetRecoilState(friendKeyAtom);
-  // useEffect(() => {
-  //   const fKey = useParams();
-  //   setFriendKey(fKey);
-  // }, []);
+const MyLoginPage = () => {
   const REST_API_KEY = `${process.env.REACT_APP_KAKAO_API}`;
   const REDIRECT_URI = `${process.env.REACT_APP_REDIRECT_URI}`;
+
   return (
     <ThemeProvider theme={defaultTheme.colors}>
       <Container>
         <TextWrapper>
           <TopWrapper>
-            <Title>카카오 로그인</Title>
+            <Title>설날에는 떡국!</Title>
             <QueButtonWrapper>
               <img src={quemark} alt='?' />
             </QueButtonWrapper>
           </TopWrapper>
           <SmallGray>
-            떡국 재료와 메시지를 보내기 위해서는
-            <br /> 로그인이 필요합니다.
+            계묘년 새해를 맞아 친구들과 덕담을 나누어요!
+            <br /> 링크를 공유하여 친구들에게 떡국 재료와
+            <br /> 새해 인사를 받고, 설날에 완성된 떡국과
+            <br />
+            메세지를 확인해 보세요.
           </SmallGray>
         </TextWrapper>
-        <Rabbit emotion='laugh' />
+        <Rabbit emotion='laugh' text='올해는 나의 해!' />
         <IngredientWrapper>
           <img src={boul} alt='boul' />
         </IngredientWrapper>
@@ -51,7 +50,7 @@ const LoginPage = () => {
     </ThemeProvider>
   );
 };
-export default LoginPage;
+export default MyLoginPage;
 
 const Container = styled.div`
   margin: 0 auto;
@@ -66,7 +65,7 @@ const Container = styled.div`
 const Title = styled.h1`
   font-size: 32px;
   font-weight: 400;
-  color: ${({ theme }) => theme.colors.yellow};
+  color: ${({ theme }) => theme.colors.purple};
   margin-bottom: 18px;
 `;
 
@@ -99,10 +98,7 @@ const KakaoLink = styled.a`
   color: inherit;
   text-decoration: none;
 `;
-const Kakao = styled.div`
-  padding: 10px;
-  padding-top: 15px;
-`;
+
 const LoginButton = styled(LongButton)`
   background-color: ${({ theme }) => theme.colors.yellow};
   color: ${({ theme }) => theme.colors.white};
@@ -119,6 +115,12 @@ const IngredientWrapper = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+const Kakao = styled.div`
+  padding: 10px;
+  padding-top: 15px;
+`;
+
 const QueButtonWrapper = styled.div`
   width: 18px;
   height: 18px;

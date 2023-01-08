@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from './styles/GlobalStyle';
-import LoginPage from './pages/LoginPage';
+import LoginPage from './pages/loginPage';
 import KakaoLogin from './pages/KakaoLogin';
 import Select from './pages/Select';
 import Message from './pages/Message';
@@ -9,19 +9,23 @@ import IntroPage from './pages/IntroPage';
 import SubmitPage from './pages/SubmitPage';
 import MainPage from './pages/MainPage';
 import './styles/GlobalFont.css';
+import MyLoginPage from './pages/MyLoginPage';
+import Result from './pages/Result';
 
 const App = () => {
   return (
     <div>
       <GlobalStyle />
       <Routes>
-        <Route path='/login' element={<LoginPage />} />
+        <Route path='/flogin' element={<LoginPage />} />
         <Route path='/intro' element={<IntroPage />} />
         <Route path='/oauth' element={<KakaoLogin />} />
         <Route path='/select' element={<Select />} />
         <Route path='/message' element={<Message />} />
         <Route path='/submit' element={<SubmitPage />} />
         <Route path='/' element={<MainPage />} />
+        <Route path='/login' element={<MyLoginPage />} />
+        <Route path='/result' element={<Result />} />
       </Routes>
     </div>
   );

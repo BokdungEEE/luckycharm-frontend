@@ -1,12 +1,10 @@
 import styled from 'styled-components';
-import quemark from '../asset/quemark.svg';
 
 export const IngredientButton = styled.button`
   width: 96px;
   height: 42px;
   border-radius: 24px;
   font-size: 16px;
-  font-family: 'GangwonEdu_OTFBoldA';
   color: ${(props) => props.color || '#ffffff'};
   background: ${(props) => props.backgroundcolor || props.theme.colors.beige};
 `;
@@ -22,14 +20,10 @@ export const LongButton = styled.button`
 `;
 
 export const ConfirmButton = styled.button`
-  border: 1px solid #947e5e; /*#D0CDB5*/
+  border: 1px solid ${(props) => props.theme.colors.brown};
   border-radius: 24px;
   width: 96px;
   height: 42px;
-  background: none;
-  color: #947e5e; /*#D0CDB5*/
-`;
-
-export const QuestionButton = styled.img`
-  src: url(${quemark});
+  background-color: rgba(0, 0, 0, 0);
+  color: ${(props) => props.theme.colors.brown};
 `;

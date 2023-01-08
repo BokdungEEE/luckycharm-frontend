@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Rabbit from '../components/MainRabbit';
 import background from '../asset/texture.svg';
 import { LongButton } from '../components/button';
 import img from '../asset/boul.svg';
 import BoulCount from '../components/BoulCount';
+import DescriptionModal from '../components/DescriptionModal';
 
 const MainPage = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
   return (
     <Container>
+      {isOpen && <DescriptionModal closeModal={closeModal} />}
       <TextWrapper>
         <Title>HAPPY NEW YEAR!</Title>
         <SmallGray>
@@ -18,7 +27,7 @@ const MainPage = () => {
         </SmallGray>
       </TextWrapper>
       <CountBowl>
-        <BoulCount cnt='7' />
+        <BoulCount cnt='7' openModal={openModal} />
       </CountBowl>
       <Rabbit emotion='smile' />
       <IngredientWrapper>
