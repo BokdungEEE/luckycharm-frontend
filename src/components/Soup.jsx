@@ -11,7 +11,7 @@ import Complete from './Complete';
 const Soup = (props) => {
   const soups = [
     {
-      id: 'green_onion',
+      id: 'greenOnion',
       img: LotGreenonion,
       title: '파릇파릇 떡국',
       ingredient: '파',
@@ -27,7 +27,7 @@ const Soup = (props) => {
       color: '#FFFFFF',
     },
     {
-      id: 'sea_weed',
+      id: 'seaWeed',
       img: LotSeaweed,
       title: '짭쪼름 떡국',
       ingredient: '김!',
@@ -77,7 +77,7 @@ const Soup = (props) => {
     return (
       <Complete
         source={GoldenRatio}
-        color={'F3D666'}
+        color={'#F3D666'}
         title={'황금비율 떡국'}
         text={'2023년은 완벽한 한 해가 되겠는걸요?'}
         ingredient={'완벽한 떡국'}

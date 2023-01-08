@@ -19,7 +19,7 @@ const Received = (props) => {
           <NameTag textColor='egg'>{data.nickname}</NameTag>
         </Container>
       );
-    } else if (data.ingredient == 'green_onion') {
+    } else if (data.ingredient == 'greenOnion') {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedGreenonion} />
@@ -47,7 +47,7 @@ const Received = (props) => {
           <NameTag textColor='water'>{data.nickname}</NameTag>
         </Container>
       );
-    } else if (data.ingredient == 'sea_weed') {
+    } else if (data.ingredient == 'seaWeed') {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedSeaweed} />
