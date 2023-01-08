@@ -11,6 +11,7 @@ import MainPage from './pages/MainPage';
 import './styles/GlobalFont.css';
 import MyLoginPage from './pages/MyLoginPage';
 import Result from './pages/Result';
+import Notfoundpage from './pages/NotFoundPage';
 
 const App = () => {
   return (
@@ -18,7 +19,7 @@ const App = () => {
       <GlobalStyle />
       <Routes>
         <Route path='/flogin' element={<LoginPage />} />
-        <Route path='/intro' element={<IntroPage />} />
+        <Route path='/intro/:frinedKey' element={<IntroPage />} />
         <Route path='/oauth' element={<KakaoLogin />} />
         <Route path='/select' element={<Select />} />
         <Route path='/message' element={<Message />} />
@@ -26,6 +27,7 @@ const App = () => {
         <Route path='/' element={<MainPage />} />
         <Route path='/login' element={<MyLoginPage />} />
         <Route path='/result' element={<Result />} />
+        <Route path='/*' element={<Notfoundpage />} />
       </Routes>
     </div>
   );
