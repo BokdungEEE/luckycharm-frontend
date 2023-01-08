@@ -12,7 +12,7 @@ const KakaoLogin = () => {
     const friendKey = localStorage.getItem(FriendKey);
     login(code);
     if (friendKey) {
-      navigate(`/select/${friendKey}`);
+      navigate(`/intro/${friendKey}`);
     } else {
       navigate('/');
     }
