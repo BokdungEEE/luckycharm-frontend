@@ -11,6 +11,7 @@ import MainPage from './pages/MainPage';
 import './styles/GlobalFont.css';
 import MyLoginPage from './pages/MyLoginPage';
 import Result from './pages/Result';
+import Notfoundpage from './pages/NotFoundPage';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path='/' element={<MainPage />} />
         <Route path='/login' element={<MyLoginPage />} />
         <Route path='/result' element={<Result />} />
+        <Route path='/*' element={<Notfoundpage />} />
       </Routes>
     </div>
   );

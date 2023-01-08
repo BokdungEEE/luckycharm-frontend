@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { AccessTokenKey, FriendKey } from '../consts/LocalStorageKey';
 import { getValidation } from '../api/token';
+import LoadingPage from './LoadingPage';
 
 const IntroPage = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -36,7 +37,9 @@ const IntroPage = () => {
   return (
     <Container>
       {isLoading ? (
-        <div>Loading</div>
+        <>
+          <LoadingPage />
+        </>
       ) : (
         <>
           <TextWrapper>
