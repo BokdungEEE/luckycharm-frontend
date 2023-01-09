@@ -4,7 +4,7 @@ import React from 'react';
 import { AccessTokenKey } from '../consts/LocalStorageKey';
 
 const token = localStorage.getItem(AccessTokenKey);
-console.log(token);
+//console.log(token);
 const NotAuthenticated = () => {
   if (token) return <Navigate to='/' />;
   return <Outlet />;
