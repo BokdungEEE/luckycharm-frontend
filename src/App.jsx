@@ -27,14 +27,13 @@ const App = () => {
           <Route path='message' element={<Message />} />
           <Route path='submit' element={<SubmitPage />} />
           <Route path='result' element={<Result />} />
-          <Route path='intro/:frinedKey' element={<IntroPage />} />
         </Route>
-        <Route path='/' element={<NotAuthenticated />}>
-          <Route path='flogin' element={<LoginPage />} />
-
-          <Route path='oauth' element={<KakaoLogin />} />
-          <Route path='login' element={<MyLoginPage />} />
-        </Route>
+        {/* <Route path='/' element={<NotAuthenticated />}> */}
+        <Route path='flogin' element={<LoginPage />} />
+        <Route path='intro/:frinedKey' element={<IntroPage />} />
+        <Route path='oauth' element={<KakaoLogin />} />
+        <Route path='login' element={<MyLoginPage />} />
+        {/* </Route> */}
         <Route path='/*' element={<Notfoundpage />} />
       </Routes>
     </div>
