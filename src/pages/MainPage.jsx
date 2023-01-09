@@ -13,18 +13,17 @@ import Toast from '../components/Toast';
 
 const MainPage = () => {
   const [toast, setToast] = useState(false);
-
-  const [data, setData] = useState();
+  const [data, setData] = useState({});
 
   const beforeRoadMyPages = useCallback(async () => {
     const { data } = await server.beforeRoadMyPage();
-    //console.log(data);
+    console.log(data);
     setData(data.data);
   }, []);
 
   useEffect(() => {
     beforeRoadMyPages();
-  }, []);
+  }, [beforeRoadMyPages]);
 
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => {
@@ -50,13 +49,13 @@ const MainPage = () => {
         </SmallGray>
       </TextWrapper>
       <CountBowl>
-        <BoulCount cnt={data.plateCnt} openModal={openModal} />
+        <BoulCount cnt={data.plateCnt || 0} openModal={openModal} />
       </CountBowl>
       <Rabbit emotion='smile' />
       <IngredientWrapper>
         <SmallWhite>받은 재료</SmallWhite>
         <img src={img} alt='boul' />
-        <TitlePurple>{data.ingredientCnt}개</TitlePurple>
+        <TitlePurple>{data.ingredientCnt || 0}개</TitlePurple>
       </IngredientWrapper>
       <ButtonWrapper>
         <ShareButton type='button' onClick={copyUrl}>

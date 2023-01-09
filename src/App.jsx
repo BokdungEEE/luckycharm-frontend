@@ -12,21 +12,29 @@ import './styles/GlobalFont.css';
 import MyLoginPage from './pages/MyLoginPage';
 import Result from './pages/Result';
 import Notfoundpage from './pages/NotFoundPage';
+import NotAuthenticated from './pages/NotAuthenticated';
+import RequireAuth from './pages/RequireAuth';
 
 const App = () => {
   return (
     <div>
       <GlobalStyle />
       <Routes>
-        <Route path='/flogin' element={<LoginPage />} />
-        <Route path='/intro/:frinedKey' element={<IntroPage />} />
-        <Route path='/oauth' element={<KakaoLogin />} />
-        <Route path='/select' element={<Select />} />
-        <Route path='/message' element={<Message />} />
-        <Route path='/submit' element={<SubmitPage />} />
-        <Route path='/' element={<MainPage />} />
-        <Route path='/login' element={<MyLoginPage />} />
-        <Route path='/result' element={<Result />} />
+        {/* <Route path='/' element={<MainPage />} /> */}
+        <Route path='/' element={<RequireAuth />}>
+          <Route path='' element={<MainPage />} />
+          <Route path='select' element={<Select />} />
+          <Route path='message' element={<Message />} />
+          <Route path='submit' element={<SubmitPage />} />
+          <Route path='result' element={<Result />} />
+          <Route path='intro/:frinedKey' element={<IntroPage />} />
+        </Route>
+        <Route path='/' element={<NotAuthenticated />}>
+          <Route path='flogin' element={<LoginPage />} />
+
+          <Route path='oauth' element={<KakaoLogin />} />
+          <Route path='login' element={<MyLoginPage />} />
+        </Route>
         <Route path='/*' element={<Notfoundpage />} />
       </Routes>
     </div>

@@ -13,13 +13,22 @@ const MainRabbit = ({ text, emotion }) => {
     laugh: laughRabbit,
   }[emotion];
 
+  const HintText = {
+    egg: '누가 달걀 좀 갖고 와 봐!',
+    rice: '중요한 게 빠졌어..',
+    seaWeed: '2% 부족해..',
+    greenOnion: '한식 기본 재료가 빠졌는 걸?',
+    water: '목이 막힐 것 같아..',
+    meet: '단백질이 필요해..',
+  }[text];
+
   return (
     <ImgWrapper>
       <RabbitWrapper src={Tokki} alt='rabbit' />
       <TableWrapper src={table} alt='table' />
       {text && (
         <BubbleWrapper>
-          <BubbleText>{text}</BubbleText>
+          <BubbleText>{HintText || '올해는 나의 해!'}</BubbleText>
         </BubbleWrapper>
       )}
     </ImgWrapper>
