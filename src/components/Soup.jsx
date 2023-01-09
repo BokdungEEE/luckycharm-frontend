@@ -63,19 +63,12 @@ const Soup = () => {
   const getSoup = async () => {
     const soupData = await getProgress();
     const values = Object.values(soupData);
-    const temp = values[0];
+    const setValues = new Set(values);
 
     let map = new Map(Object.entries(soupData));
-
     const most = [...map.entries()].reduce((a, b) => (a[1] > b[1] ? a : b))[0];
 
-    if (
-      values[1] === temp &&
-      values[2] === temp &&
-      values[3] === temp &&
-      values[4] === temp &&
-      values[5] === temp
-    ) {
+    if (setValues.size === 1) {
       return (
         <Complete
           source={GoldenRatio}
@@ -90,9 +83,9 @@ const Soup = () => {
         <div>
           {soups
             .filter((soup) => soup.id === most)
-            .map((soup, i) => (
+            .map((soup) => (
               <Complete
-                key={i}
+                key={soup.id}
                 source={soup.img}
                 color={soup.color}
                 title={soup.title}
