@@ -22,7 +22,7 @@ const IntroPage = () => {
 
   const roadHints = useCallback(async () => {
     const { data } = await server.roadHint();
-    console.log(data);
+    //console.log(data);
     setData(data.data);
   }, []);
 
