@@ -9,13 +9,26 @@ import { useParams } from 'react-router-dom';
 import { AccessTokenKey, FriendKey } from '../consts/LocalStorageKey';
 import { getValidation } from '../api/token';
 import LoadingPage from './LoadingPage';
+import { useCallback } from 'react';
+import server from '../api/service';
 
 const IntroPage = () => {
   const [isLogin, setIsLogin] = useState(false);
+  const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const { frinedKey } = useParams();
   const navigate = useNavigate();
   localStorage.setItem(FriendKey, frinedKey);
+
+  const roadHints = useCallback(async () => {
+    const { data } = await server.roadHint();
+    //console.log(data);
+    setData(data.data);
+  }, []);
+
+  useEffect(() => {
+    roadHints();
+  }, [roadHints]);
 
   const isTokenValid = async () => {
     setIsLoading(true);
@@ -52,7 +65,7 @@ const IntroPage = () => {
               떡국 재료와 함께 새해 인사 메시지를 보내주세요
             </SmallGray>
           </TextWrapper>
-          <Rabbit emotion='angry' text='목이 막힐 것 같아' />
+          <Rabbit emotion='angry' text={data} />
           <IngredientWrapper>
             <img src={img} alt='ingred' />
           </IngredientWrapper>
