@@ -1,7 +1,9 @@
 import { Axios } from '../lib/Axios';
 
 export default {
-  //오픈 전 마이페이지
+  /**
+   * 오픈 전 마이페이지
+   */
   beforeRoadMyPage() {
     return Axios({
       url: '/api/users/me',
@@ -9,7 +11,9 @@ export default {
     });
   },
 
-  //오픈 후 마이페이지
+  /**
+   * 오픈 후 마이페이지
+   */
   afterRoadMyPage() {
     return Axios({
       url: '/api/users/me/after',
@@ -17,10 +21,22 @@ export default {
     });
   },
 
-  //링크 공유
+  /**
+   * 링크 공유
+   */
   shareLink() {
     return Axios({
       url: '/api/users/me',
+      method: 'get',
+    });
+  },
+
+  /**
+   * 힌트 보기
+   */
+  roadHint() {
+    return Axios({
+      url: 'api/send/message',
       method: 'get',
     });
   },
