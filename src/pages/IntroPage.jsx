@@ -9,35 +9,44 @@ import { useParams } from 'react-router-dom';
 import { AccessTokenKey, FriendKey } from '../consts/LocalStorageKey';
 import { getValidation } from '../api/token';
 import LoadingPage from './LoadingPage';
-import { useCallback } from 'react';
 import server from '../api/service';
+import Notfoundpage from './NotFoundPage';
+import { IsBefore } from '../api/IsBefore';
 
 const IntroPage = () => {
   const [isLogin, setIsLogin] = useState(false);
-  const [data, setData] = useState({});
+  const [hint, setHint] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [isBefore, setIsBefore] = useState(true);
   const { frinedKey } = useParams();
   const navigate = useNavigate();
   localStorage.setItem(FriendKey, frinedKey);
 
-  const roadHints = useCallback(async () => {
+  const roadHints = async () => {
+    setIsLoading(true);
     const { data } = await server.roadHint();
-    setData(data.data);
-  }, []);
-
-  useEffect(() => {
-    roadHints();
-  }, [roadHints]);
+    setHint(data.data);
+    setIsLoading(false);
+  };
 
   const isTokenValid = async () => {
     setIsLoading(true);
-    const data = await getValidation();
-    if (data === "This user's token is valid") setIsLogin(true);
+    const valid = await getValidation();
+    if (valid === "This user's token is valid") setIsLogin(true);
     else setIsLogin(false);
     setIsLoading(false);
   };
 
+  const getIsBefore = async () => {
+    setIsLoading(true);
+    const { data } = await IsBefore();
+    setIsBefore(data);
+    setIsLoading(false);
+  };
+
   useEffect(() => {
+    getIsBefore();
+    roadHints();
     if (localStorage.getItem(AccessTokenKey)) isTokenValid();
     else setIsLogin(false);
   }, []);
@@ -46,13 +55,14 @@ const IntroPage = () => {
     if (isLogin) navigate('/select');
     else navigate('/flogin');
   };
+
   return (
     <Container>
       {isLoading ? (
         <>
           <LoadingPage />
         </>
-      ) : (
+      ) : isBefore ? (
         <>
           <TextWrapper>
             <Title>내 떡국을 완성해줘!</Title>
@@ -64,7 +74,7 @@ const IntroPage = () => {
               떡국 재료와 함께 새해 인사 메시지를 보내주세요
             </SmallGray>
           </TextWrapper>
-          <Rabbit emotion='angry' text={data} />
+          <Rabbit emotion='angry' text={hint} />
           <IngredientWrapper>
             <img src={img} alt='ingred' />
           </IngredientWrapper>
@@ -74,6 +84,8 @@ const IntroPage = () => {
             </LongButton>
           </ButtonWrapper>
         </>
+      ) : (
+        <Notfoundpage />
       )}
     </Container>
   );
