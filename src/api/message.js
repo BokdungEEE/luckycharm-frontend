@@ -8,6 +8,6 @@ export const sendMessage = async (messageObj) => {
       messageObj,
     });
   } catch (e) {
-    console.log(e);
+    alert(e.response);
   }
 };

@@ -4,14 +4,22 @@ import { ReactComponent as Arrow } from '../asset/arrow.svg';
 import styled from 'styled-components';
 import { LongButton } from '../components/button';
 import { sendMessage } from '../api/message';
-import { SelectedIngredientImgKey } from '../consts/LocalStorageKey';
+import { FriendKey, SelectedIngredientImgKey } from '../consts/LocalStorageKey';
+import { useEffect } from 'react';
+import Notfoundpage from './NotFoundPage';
 
 const Message = () => {
+  const [selectedData, setSelectedData] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
-  const { img, text } = location.state.selectedData;
   const [nickname, setNickname] = useState('');
   const [content, setContent] = useState('');
+
+  useEffect(() => {
+    if (!localStorage.getItem(FriendKey)) navigate('/');
+    if (location.state) setSelectedData(location.state.selectedData);
+  }, []);
+
   const handleNickName = (e) => {
     setNickname(e.target.value);
   };
@@ -21,11 +29,11 @@ const Message = () => {
 
   const handleSubmit = () => {
     const submitObj = {
-      ingredient: text,
+      ingredient: selectedData.text,
       nickName: nickname,
       content,
     };
-    localStorage.setItem(SelectedIngredientImgKey, img);
+    localStorage.setItem(SelectedIngredientImgKey, selectedData.img);
     sendMessage(submitObj);
     navigate('/submit');
   };
@@ -35,31 +43,37 @@ const Message = () => {
   };
 
   return (
-    <Container>
-      <ArrowImg onClick={goBack} />
-      <Text>
-        친구에게 보낼
-        <br />
-        메시지를 입력해주세요
-      </Text>
-      <StyledImg src={img} />
-      <NicknameContainer>
-        <WordsCount>{nickname.length}/20</WordsCount>
-        <NicknameInput
-          onChange={handleNickName}
-          type='text'
-          maxLength={20}
-        ></NicknameInput>
-        <StyledPlaceholder>보내는 사람 :</StyledPlaceholder>
-      </NicknameContainer>
-      <ContentContainer>
-        <ContentInput onChange={handleContent} maxLength={200} />
-        <WordsCount>{content.length}/200</WordsCount>
-      </ContentContainer>
-      <LongButton onClick={handleSubmit} disabled={!(nickname && content)}>
-        친구에게 보내기
-      </LongButton>
-    </Container>
+    <>
+      {selectedData ? (
+        <Container>
+          <ArrowImg onClick={goBack} />
+          <Text>
+            친구에게 보낼
+            <br />
+            메시지를 입력해주세요
+          </Text>
+          <StyledImg src={selectedData.img} />
+          <NicknameContainer>
+            <WordsCount>{nickname.length}/20</WordsCount>
+            <NicknameInput
+              onChange={handleNickName}
+              type='text'
+              maxLength={20}
+            ></NicknameInput>
+            <StyledPlaceholder>보내는 사람 :</StyledPlaceholder>
+          </NicknameContainer>
+          <ContentContainer>
+            <ContentInput onChange={handleContent} maxLength={200} />
+            <WordsCount>{content.length}/200</WordsCount>
+          </ContentContainer>
+          <LongButton onClick={handleSubmit} disabled={!(nickname && content)}>
+            친구에게 보내기
+          </LongButton>
+        </Container>
+      ) : (
+        <Notfoundpage />
+      )}
+    </>
   );
 };
 

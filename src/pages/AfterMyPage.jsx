@@ -9,9 +9,10 @@ import { useState } from 'react';
 import { useCallback } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import LoadingPage from './LoadingPage';
 
 const AfterMainPage = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState(null);
   const navigate = useNavigate();
 
   const beforeRoadMyPages = useCallback(async () => {
@@ -22,6 +23,8 @@ const AfterMainPage = () => {
   useEffect(() => {
     beforeRoadMyPages();
   }, [beforeRoadMyPages]);
+
+  if (!data) return <LoadingPage />;
 
   return (
     <Container>

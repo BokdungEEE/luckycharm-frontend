@@ -8,6 +8,6 @@ export const login = async (code) => {
     Axios.defaults.headers.Authorization = `Bearer ${accessToken}`;
     localStorage.setItem(AccessTokenKey, accessToken);
   } catch (e) {
-    console.log(e);
+    alert(e.response);
   }
 };
