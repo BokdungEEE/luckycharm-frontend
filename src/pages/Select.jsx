@@ -6,21 +6,26 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { LongButton } from '../components/button';
 import { useEffect } from 'react';
+import { FriendKey } from '../consts/LocalStorageKey';
 
 const Select = () => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState('');
   const [selectedData, setData] = useState({});
+
   useEffect(() => {
+    if (!localStorage.getItem(FriendKey)) navigate('/');
     const select = data.filter((ingredient) => selected == ingredient.id)[0];
     setData(select);
   }, [selected]);
+
   const onSelect = () => {
     navigate('/message', { state: { selectedData } });
   };
   const goBack = () => {
     navigate(-1);
   };
+
   return (
     <Container>
       <ArrowImg onClick={goBack} />
