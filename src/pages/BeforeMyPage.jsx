@@ -18,7 +18,6 @@ const MainPage = () => {
 
   const beforeRoadMyPages = useCallback(async () => {
     const { data } = await server.beforeRoadMyPage();
-    //console.log(data);
     setData(data.data);
   }, []);
 
