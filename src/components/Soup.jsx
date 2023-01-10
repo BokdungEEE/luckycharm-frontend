@@ -62,9 +62,10 @@ const Soup = () => {
   ];
   const getSoup = async () => {
     const soupData = await getProgress();
+    // console.log(soupData);
+
     const values = Object.values(soupData);
     const setValues = new Set(values);
-
     let map = new Map(Object.entries(soupData));
     const most = [...map.entries()].reduce((a, b) => (a[1] > b[1] ? a : b))[0];
 

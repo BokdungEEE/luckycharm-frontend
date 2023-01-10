@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ReactComponent as Arrow } from '../asset/arrow.svg';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Soup from '../components/Soup';
 import ProgressBar from '../components/progressbar';
 import Received from '../components/received';
-
-// import { getReceived } from '../api/received';
+import LoadingPage from './LoadingPage';
+import { getProgress } from '../api/progress';
+import { getReceived } from '../api/received';
+import Ingredient from '../components/Ingredient';
+import { data } from '../data/selectData';
 
 const Result = () => {
-  // console.log(getReceived());
-  // console.log(Object.keys(promise));
-
   const sample = [
     {
       ingredient: 'rice',
@@ -44,26 +44,52 @@ const Result = () => {
       message: '새복많',
     },
   ];
-
-  // console.log(getReceived());
-
+  // const getData = getReceived();
+  // console.log(getData);
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState();
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
   };
 
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    setIsLoading(true);
+    const receivedData = await getReceived();
+    setData(receivedData);
+    setIsLoading(false);
+  };
+  console.log('data is', data);
+  // console.log('sample is', sample);
+
+  // let datas = data.map(function (element) {
+  //   console.log('datas is', datas);
+  // });
+  // console.log('sample is', sample);
+  // console.log(getProgress());
   return (
     <Container>
-      <TopWrapper>
-        <ArrowImg onClick={goBack} />
-      </TopWrapper>
-      <ResultContainer>
-        <Soup />
-      </ResultContainer>
-      <ProgressBar height={20} />
-      <ReceivedIngredient>
-        <Received readings={sample} />
-      </ReceivedIngredient>
+      {isLoading ? (
+        <>
+          <LoadingPage />
+        </>
+      ) : (
+        <>
+          <TopWrapper>
+            <ArrowImg onClick={goBack} />
+          </TopWrapper>
+          <ResultContainer>
+            <Soup />
+          </ResultContainer>
+          <ProgressBar height={20} />
+          <ReceivedIngredient>
+            <Received readings={data} />
+          </ReceivedIngredient>
+        </>
+      )}
     </Container>
   );
 };

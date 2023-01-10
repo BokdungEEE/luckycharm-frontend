@@ -16,42 +16,42 @@ const Received = (props) => {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedEgg} />
-          <NameTag textColor='egg'>{data.nickname}</NameTag>
+          <NameTag textColor='egg'>{data.nickName}</NameTag>
         </Container>
       );
     } else if (data.ingredient == 'greenOnion') {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedGreenonion} />
-          <NameTag textColor='greenonion'>{data.nickname}</NameTag>
+          <NameTag textColor='greenonion'>{data.nickName}</NameTag>
         </Container>
       );
     } else if (data.ingredient == 'meat') {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedMeat} />
-          <NameTag textColor='meat'>{data.nickname}</NameTag>
+          <NameTag textColor='meat'>{data.nickName}</NameTag>
         </Container>
       );
-    } else if (data.ingredient == 'rice') {
+    } else if (data.ingredient == '떡') {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedRice} />
-          <NameTag textColor='white'>{data.nickname}</NameTag>
+          <NameTag textColor='white'>{data.nickName}</NameTag>
         </Container>
       );
     } else if (data.ingredient == 'water') {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedWater} />
-          <NameTag textColor='water'>{data.nickname}</NameTag>
+          <NameTag textColor='water'>{data.nickName}</NameTag>
         </Container>
       );
     } else if (data.ingredient == 'seaWeed') {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedSeaweed} />
-          <NameTag textColor='seaweed'>{data.nickname}</NameTag>
+          <NameTag textColor='seaweed'>{data.nickName}</NameTag>
         </Container>
       );
     }
