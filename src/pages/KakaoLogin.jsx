@@ -3,21 +3,32 @@ import { login } from '../api/login';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { FriendKey } from '../consts/LocalStorageKey';
+import LoadingPage from './LoadingPage';
 
 const KakaoLogin = () => {
   const navigate = useNavigate();
   const params = new URL(window.location.href).searchParams;
   const code = params.get('code');
+  const friendKey = localStorage.getItem(FriendKey);
+
   useEffect(() => {
-    const friendKey = localStorage.getItem(FriendKey);
-    login(code);
+    signin();
+  }, []);
+
+  const signin = async () => {
+    await login(code);
     if (friendKey) {
       navigate(`/intro/${friendKey}`);
     } else {
       navigate('/');
     }
-  }, []);
-  return <div></div>;
+  };
+
+  return (
+    <>
+      <LoadingPage />
+    </>
+  );
 };
 
 export default KakaoLogin;
