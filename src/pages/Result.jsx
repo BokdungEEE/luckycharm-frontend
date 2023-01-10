@@ -1,19 +1,44 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
+=======
+import React, { useEffect, useState } from 'react';
+>>>>>>> ca9465baa4283138e8e67ef903f244dddc60d1af
 import { ReactComponent as Arrow } from '../asset/arrow.svg';
 import styled from 'styled-components';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Soup from '../components/Soup';
 import ProgressBar from '../components/progressbar';
 import Received from '../components/received';
+<<<<<<< HEAD
 import LoadingPage from './LoadingPage';
 import { getProgress } from '../api/progress';
 import { getReceived } from '../api/received';
 import Ingredient from '../components/Ingredient';
 import { data } from '../data/selectData';
+=======
+import { getIngredients } from '../api/getIngredients';
+import Notfoundpage from './NotFoundPage';
+>>>>>>> ca9465baa4283138e8e67ef903f244dddc60d1af
 
 const Result = () => {
-  const { state } = useLocation();
-  console.log(state);
+  const [isLoading, setIsLoading] = useState(false);
+  const [ingredients, setIngredients] = useState({});
+
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    setIsLoading(true);
+    const data = await getIngredients();
+    console.log(data);
+    setIngredients(data);
+    setIsLoading(false);
+  };
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
+
   let readings = [
     {
       rice: 30,
@@ -56,6 +81,7 @@ const Result = () => {
       message: '새복많',
     },
   ];
+<<<<<<< HEAD
   // const getData = getReceived();
   // console.log(getData);
   const [isLoading, setIsLoading] = useState(false);
@@ -89,11 +115,17 @@ const Result = () => {
           <LoadingPage />
         </>
       ) : (
+=======
+  return (
+    <Container>
+      {!isLoading && ingredients ? (
+>>>>>>> ca9465baa4283138e8e67ef903f244dddc60d1af
         <>
           <TopWrapper>
             <ArrowImg onClick={goBack} />
           </TopWrapper>
           <ResultContainer>
+<<<<<<< HEAD
             <Soup />
           </ResultContainer>
           <ProgressBar height={20} />
@@ -101,6 +133,17 @@ const Result = () => {
             <Received readings={data} />
           </ReceivedIngredient>
         </>
+=======
+            <Soup readings={readings} />
+          </ResultContainer>
+          <ProgressBar readings={readings} height={20} />
+          <ReceivedIngredient>
+            <Received readings={readings} />
+          </ReceivedIngredient>
+        </>
+      ) : (
+        <Notfoundpage />
+>>>>>>> ca9465baa4283138e8e67ef903f244dddc60d1af
       )}
     </Container>
   );
