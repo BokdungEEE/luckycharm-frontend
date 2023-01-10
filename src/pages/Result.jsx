@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ReactComponent as Arrow } from '../asset/arrow.svg';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Soup from '../components/Soup';
 import ProgressBar from '../components/progressbar';
 import Received from '../components/received';
@@ -12,6 +12,18 @@ import Ingredient from '../components/Ingredient';
 import { data } from '../data/selectData';
 
 const Result = () => {
+  const { state } = useLocation();
+  console.log(state);
+  let readings = [
+    {
+      rice: 30,
+      green_onion: 30,
+      sea_weed: 30,
+      meat: 300,
+      egg: 30,
+      water: 30,
+    },
+  ];
   const sample = [
     {
       ingredient: 'rice',
