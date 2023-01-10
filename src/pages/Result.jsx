@@ -1,12 +1,14 @@
 import React from 'react';
 import { ReactComponent as Arrow } from '../asset/arrow.svg';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Soup from '../components/Soup';
 import ProgressBar from '../components/progressbar';
 import Received from '../components/received';
 
 const Result = () => {
+  const { state } = useLocation();
+  console.log(state);
   let readings = [
     {
       rice: 30,

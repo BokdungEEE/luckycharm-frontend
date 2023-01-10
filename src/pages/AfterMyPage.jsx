@@ -15,14 +15,15 @@ const AfterMainPage = () => {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
 
-  const beforeRoadMyPages = useCallback(async () => {
-    const { data } = await server.beforeRoadMyPage();
+  const afterRoadMyPage = useCallback(async () => {
+    const { data } = await server.afterRoadMyPage();
+    console.log(data.data);
     setData(data.data);
   }, []);
 
   useEffect(() => {
-    beforeRoadMyPages();
-  }, [beforeRoadMyPages]);
+    afterRoadMyPage();
+  }, [afterRoadMyPage]);
 
   if (!data) return <LoadingPage />;
 
@@ -38,14 +39,17 @@ const AfterMainPage = () => {
       <Rabbit emotion='laugh' />
       <HowMany>
         <SmallBrown>받은 재료</SmallBrown>
-        <BigBrown>총 {data.ingredientCnt}개</BigBrown>
+        <BigBrown>총 {data.length}개</BigBrown>
       </HowMany>
 
       <IngredientWrapper>
         <img src={img} alt='boul' />
       </IngredientWrapper>
       <ButtonWrapper>
-        <ConfirmButton type='button' onClick={() => navigate('/result')}>
+        <ConfirmButton
+          type='button'
+          onClick={() => navigate('/result', { state: data })}
+        >
           내 떡국 확인하기
         </ConfirmButton>
       </ButtonWrapper>
