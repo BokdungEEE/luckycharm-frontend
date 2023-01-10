@@ -17,7 +17,6 @@ const AfterMainPage = () => {
 
   const afterRoadMyPage = useCallback(async () => {
     const { data } = await server.afterRoadMyPage();
-    console.log(data.data);
     setData(data.data);
   }, []);
 
@@ -46,10 +45,7 @@ const AfterMainPage = () => {
         <img src={img} alt='boul' />
       </IngredientWrapper>
       <ButtonWrapper>
-        <ConfirmButton
-          type='button'
-          onClick={() => navigate('/result', { state: data })}
-        >
+        <ConfirmButton type='button' onClick={() => navigate('/result')}>
           내 떡국 확인하기
         </ConfirmButton>
       </ButtonWrapper>

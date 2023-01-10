@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ReactComponent as Arrow } from '../asset/arrow.svg';
 import styled from 'styled-components';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Soup from '../components/Soup';
 import ProgressBar from '../components/progressbar';
 import Received from '../components/received';
+import { getIngredients } from '../api/getIngredients';
+import Notfoundpage from './NotFoundPage';
 
 const Result = () => {
-  const { state } = useLocation();
-  console.log(state);
+  const [isLoading, setIsLoading] = useState(false);
+  const [ingredients, setIngredients] = useState({});
+
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    setIsLoading(true);
+    const data = await getIngredients();
+    console.log(data);
+    setIngredients(data);
+    setIsLoading(false);
+  };
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
+
   let readings = [
     {
       rice: 30,
@@ -51,24 +69,24 @@ const Result = () => {
       message: '새복많',
     },
   ];
-
-  const navigate = useNavigate();
-  const goBack = () => {
-    navigate(-1);
-  };
-
   return (
     <Container>
-      <TopWrapper>
-        <ArrowImg onClick={goBack} />
-      </TopWrapper>
-      <ResultContainer>
-        <Soup readings={readings} />
-      </ResultContainer>
-      <ProgressBar readings={readings} height={20} />
-      <ReceivedIngredient>
-        <Received readings={sample} />
-      </ReceivedIngredient>
+      {!isLoading && ingredients ? (
+        <>
+          <TopWrapper>
+            <ArrowImg onClick={goBack} />
+          </TopWrapper>
+          <ResultContainer>
+            <Soup readings={readings} />
+          </ResultContainer>
+          <ProgressBar readings={readings} height={20} />
+          <ReceivedIngredient>
+            <Received readings={readings} />
+          </ReceivedIngredient>
+        </>
+      ) : (
+        <Notfoundpage />
+      )}
     </Container>
   );
 };
