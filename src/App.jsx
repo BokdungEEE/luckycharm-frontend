@@ -14,6 +14,7 @@ import Result from './pages/Result';
 import Notfoundpage from './pages/NotFoundPage';
 import NotAuthenticated from './pages/NotAuthenticated';
 import RequireAuth from './pages/RequireAuth';
+import AfterMainPage from './pages/AfterMyPage';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         {/* <Route path='/' element={<MainPage />} /> */}
         <Route path='/' element={<RequireAuth />}>
           <Route path='' element={<MainPage />} />
+          <Route path='after' element={<AfterMainPage />} />
           <Route path='select' element={<Select />} />
           <Route path='message' element={<Message />} />
           <Route path='submit' element={<SubmitPage />} />
@@ -30,6 +32,7 @@ const App = () => {
         </Route>
         {/* <Route path='/' element={<NotAuthenticated />}> */}
         <Route path='flogin' element={<LoginPage />} />
+
         <Route path='intro/:frinedKey' element={<IntroPage />} />
         <Route path='oauth' element={<KakaoLogin />} />
         <Route path='login' element={<MyLoginPage />} />
