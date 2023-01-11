@@ -14,7 +14,7 @@ const Soup = ({ readings }) => {
       id: 'greenOnion',
       img: LotGreenonion,
       title: '파릇파릇 떡국',
-      ingredient: '파',
+      ingredient: '파!',
       text: '2023년은 대파처럼 싱싱한 한 해가 될거예요',
       color: '#8CC638',
     },
