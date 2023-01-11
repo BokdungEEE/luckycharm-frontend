@@ -4,6 +4,7 @@ export const IngredientButton = styled.button`
   width: 96px;
   height: 42px;
   border-radius: 24px;
+  padding-top: 5px;
   font-size: 16px;
   color: ${(props) => props.color || '#ffffff'};
   background: ${(props) => props.backgroundcolor || props.theme.colors.beige};
@@ -16,6 +17,7 @@ export const LongButton = styled.button`
   font-size: 24px;
   color: ${(props) => props.theme.colors.brown};
   box-shadow: 0px 2px 6px rgba(29, 29, 29, 0.25);
+  padding-top: 5px;
   cursor: pointer;
 `;
 

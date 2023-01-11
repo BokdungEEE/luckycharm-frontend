@@ -105,6 +105,9 @@ const LoginButton = styled(LongButton)`
   background-color: ${({ theme }) => theme.colors.yellow};
   color: ${({ theme }) => theme.colors.white};
   padding-top: 5px;
+  &:hover {
+    color: ${({ theme }) => theme.colors.beige};
+  }
 `;
 
 const IngredientWrapper = styled.div`

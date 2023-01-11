@@ -155,7 +155,9 @@ const TitlePurple = styled.h2`
 `;
 
 const ShareButton = styled(LongButton)`
-  padding-top: 5px;
   background-color: ${({ theme }) => theme.colors.purple};
-  color: ${({ theme }) => theme.colors.white}; ;
+  color: ${({ theme }) => theme.colors.white};
+  &:hover {
+    color: ${({ theme }) => theme.colors.beige};
+  }
 `;
