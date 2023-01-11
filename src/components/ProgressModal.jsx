@@ -1,70 +1,47 @@
 import React from 'react';
 import styled from 'styled-components';
-import Egg from '../asset/egg.svg';
-import GreenOnion from '../asset/greenonion.svg';
-import Meat from '../asset/meat.svg';
-import RiceCake from '../asset/ricecake.svg';
-import Seaweed from '../asset/seaweed.svg';
-import Water from '../asset/water.svg';
 import ProgressBar from './progressbar';
-import { useState } from 'react';
-import { getIngredients } from '../api/getIngredients';
-import { useCallback } from 'react';
-import { useEffect } from 'react';
+import { ReactComponent as Cancel } from '../asset/cancel.svg';
+import { ReceivedData } from '../data/recievedData';
+import { MatchData } from '../data/MatchData';
 
-const ProgressModal = () => {
-  const [data, setData] = useState({});
-
-  const getIngredient = useCallback(async () => {
-    const data = await getIngredients();
-    //console.log(data);
-    setData(data);
-  }, []);
-
-  useEffect(() => {
-    getIngredient();
-  }, [getIngredient]);
-
+const ProgressModal = ({ readings, setIsOpen }) => {
+  const IngredientsKeys = Object.keys(readings);
   return (
-    <ConContainer>
-      <Container>
+    <Container
+      onClick={() => {
+        setIsOpen(false);
+      }}
+    >
+      <ContentContainer
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <StyledCancel
+          onClick={() => {
+            setIsOpen(false);
+          }}
+        />
         <ProgressWrapper>
-          <ProgressBar readings={data} height={566} />
+          <ProgressBar readings={readings} height={566} />
         </ProgressWrapper>
         <Background>
-          <BoulWrapper>
-            <Img src={RiceCake} alt='dduk' />
-            <Gray>떡: 12개</Gray>
-          </BoulWrapper>
-          <BoulWrapper>
-            <Img src={GreenOnion} alt='pa' />
-            <Gray>파: 12개</Gray>
-          </BoulWrapper>
-          <BoulWrapper>
-            <Img src={Seaweed} alt='gim' />
-            <Gray>김: 12개</Gray>
-          </BoulWrapper>
-          <BoulWrapper>
-            <Img src={Meat} alt='gogi' />
-            <Gray>고기: 12개</Gray>
-          </BoulWrapper>
-          <BoulWrapper>
-            <Img src={Egg} alt='egg' />
-            <Gray>계란: 12개</Gray>
-          </BoulWrapper>
-          <BoulWrapper>
-            <Img src={Water} alt='mul' />
-            <Gray>물: 12개</Gray>
-          </BoulWrapper>
+          {IngredientsKeys.map((ingredient, idx) => (
+            <BoulWrapper key={idx}>
+              <Img src={ReceivedData[ingredient]} />
+              <Gray>{`${MatchData[ingredient]}: ${readings[ingredient]}개`}</Gray>
+            </BoulWrapper>
+          ))}
         </Background>
-      </Container>
-    </ConContainer>
+      </ContentContainer>
+    </Container>
   );
 };
 
 export default ProgressModal;
 
-const ConContainer = styled.div`
+const Container = styled.div`
   background-color: rgba(56, 51, 43, 0.8);
   position: absolute;
   height: 100%;
@@ -75,11 +52,15 @@ const ConContainer = styled.div`
   z-index: 10;
 `;
 
-const Container = styled.div`
+const ContentContainer = styled.div`
   width: 342px;
   height: 566px;
+`;
 
-  //position: absolute;
+const StyledCancel = styled(Cancel)`
+  align-self: flex-end;
+  margin: 15px 20px;
+  margin-left: 300px;
 `;
 
 const Background = styled.div`

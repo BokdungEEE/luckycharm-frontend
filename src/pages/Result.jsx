@@ -13,7 +13,8 @@ import ProgressModal from '../components/ProgressModal';
 
 const Result = () => {
   const [modalInfo, setModalInfo] = useState({});
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMsgOpen, setIsMsgOpen] = useState(false);
+  const [isBarOpne, setIsBarOpne] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [ingredients, setIngredients] = useState({});
   const { state: recieved } = useLocation();
@@ -38,8 +39,11 @@ const Result = () => {
     <Container>
       {!isLoading && ingredients && recieved ? (
         <>
-          {isOpen && (
-            <MessageModal modalInfo={modalInfo} setIsOpen={setIsOpen} />
+          {isMsgOpen && (
+            <MessageModal modalInfo={modalInfo} setIsOpen={setIsMsgOpen} />
+          )}
+          {isBarOpne && (
+            <ProgressModal readings={ingredients} setIsOpen={setIsBarOpne} />
           )}
           <TopWrapper>
             <ArrowImg onClick={goBack} />
@@ -47,18 +51,21 @@ const Result = () => {
           <ResultContainer>
             <Soup readings={ingredients} />
           </ResultContainer>
-          <ProgressBar readings={ingredients} height={20} />
+          <ProgressBar
+            readings={ingredients}
+            height={20}
+            setIsOpen={setIsBarOpne}
+          />
           <ReceivedIngredient>
             {recieved.map((msg, idx) => (
               <Received
                 key={idx}
                 message={msg}
-                setIsOpen={setIsOpen}
+                setIsOpen={setIsMsgOpen}
                 setModalInfo={setModalInfo}
               />
             ))}
           </ReceivedIngredient>
-          <ProgressModal />
         </>
       ) : (
         <LoadingPage />

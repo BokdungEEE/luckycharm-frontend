@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ProgressBar = ({ readings, height }) => {
+const ProgressBar = ({ readings, height, setIsOpen }) => {
   const samples = Object.entries(readings);
   const values = Object.values(readings);
   let total = values.reduce((prev, curr) => prev + curr, 0);
   return (
-    <div>
+    <div onClick={() => setIsOpen(true)}>
       {samples.map(function ([key, value], i) {
         if (value > 0) {
           return (
