@@ -40,18 +40,4 @@ const Bar = styled.div`
   background-color: ${(props) => props.theme.colors[props.name]};
 `;
 
-const Progress = styled.div`
-  div {
-    margin-bottom: 42px;
-    &:first-child {
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
-    }
-    &:last-child {
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-    }
-  }
-`;
-
 export default ProgressBar;
