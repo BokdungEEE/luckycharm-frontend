@@ -9,6 +9,7 @@ import { getIngredients } from '../api/getIngredients';
 import { useLocation } from 'react-router-dom';
 import LoadingPage from './LoadingPage';
 import MessageModal from '../components/MessageModal';
+import ProgressModal from '../components/ProgressModal';
 
 const Result = () => {
   const [modalInfo, setModalInfo] = useState({});
@@ -57,6 +58,7 @@ const Result = () => {
               />
             ))}
           </ReceivedIngredient>
+          <ProgressModal />
         </>
       ) : (
         <LoadingPage />
