@@ -18,7 +18,6 @@ const Result = () => {
   const getData = async () => {
     setIsLoading(true);
     const data = await getIngredients();
-    console.log(data);
     setIngredients(data);
     setIsLoading(false);
   };
