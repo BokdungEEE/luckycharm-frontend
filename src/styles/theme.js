@@ -10,7 +10,7 @@ export const defaultTheme = {
     gray: '#686868',
     brown: '#947E5E',
     beige: '#D0CDB5',
-    greenonion: '#8CC638',
+    greenOnion: '#8CC638',
     seaWeed: '#4C4B4A',
     meet: '#84604A',
     egg: '#FFCA43',
