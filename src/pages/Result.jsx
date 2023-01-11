@@ -116,6 +116,9 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: ${(props) => props.theme.colors.brown};
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const TopWrapper = styled.div`
