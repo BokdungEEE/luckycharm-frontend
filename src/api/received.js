@@ -4,6 +4,6 @@ export const getReceived = async () => {
     const res = await Axios('/api/users/me/after');
     return res.data.data;
   } catch (e) {
-    console.log(e);
+    alert(e.response);
   }
 };

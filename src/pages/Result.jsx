@@ -30,43 +30,67 @@ const Result = () => {
   const goBack = () => {
     navigate(-1);
   };
-  console.log(received);
 
   const sample = [
     {
       ingredient: 'rice',
-      nickname: '김땡땡',
+      nickName: '김땡땡',
       message: '새복많',
     },
     {
       ingredient: 'egg',
-      nickname: '가나다라마바사',
+      nickName: '가나다라마바사',
       message: '새복많',
     },
     {
       ingredient: 'water',
-      nickname: 'water',
+      nickName: 'water',
       message: '새복많',
     },
     {
       ingredient: 'meat',
-      nickname: '김땡땡',
+      nickName: '김땡땡',
       message: '새복많',
     },
     {
       ingredient: 'seaWeed',
-      nickname: '박땡땡',
+      nickName: '박땡땡',
       message: '새복많',
     },
     {
       ingredient: 'greenOnion',
-      nickname: '박땡땡',
+      nickName: '박땡땡',
+      message: '새복많',
+    },
+    {
+      ingredient: 'greenOnion',
+      nickName: '박땡땡',
+      message: '새복많',
+    },
+    {
+      ingredient: 'greenOnion',
+      nickName: '박땡땡',
+      message: '새복많',
+    },
+    {
+      ingredient: 'greenOnion',
+      nickName: '박땡땡',
+      message: '새복많',
+    },
+    {
+      ingredient: 'greenOnion',
+      nickName: '박땡땡',
+      message: '새복많',
+    },
+    {
+      ingredient: 'greenOnion',
+      nickName: '박땡땡',
       message: '새복많',
     },
   ];
   return (
     <Container>
-      {!isLoading && ingredients ? (
+      {!isLoading && ingredients && received ? (
         <>
           <TopWrapper>
             <ArrowImg onClick={goBack} />
@@ -76,7 +100,7 @@ const Result = () => {
           </ResultContainer>
           <ProgressBar readings={ingredients} height={20} />
           <ReceivedIngredient>
-            <Received readings={sample} />
+            <Received readings={received} />
           </ReceivedIngredient>
         </>
       ) : (
@@ -89,6 +113,8 @@ const Result = () => {
 const Container = styled.div`
   display: flex;
   width: 390px;
+  height: 100vh;
+  overflow: scroll;
   margin: 0 auto;
   flex-direction: column;
   align-items: center;
@@ -112,8 +138,9 @@ const ResultContainer = styled.div`
 `;
 
 const ReceivedIngredient = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 195px 195px;
+  grid-template-rows: 195px 195px;
 `;
 
 export default Result;

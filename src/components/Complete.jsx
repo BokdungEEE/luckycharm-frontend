@@ -73,7 +73,7 @@ const CompleteImg = styled.img`
 `;
 
 const ImageWrapper = styled.img`
-  margin: auto;
+  margin: 15px;
 `;
 
 export default Complete;
