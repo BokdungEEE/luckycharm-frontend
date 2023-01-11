@@ -7,9 +7,8 @@ import LotSeaweed from '../asset/lotseaweed.svg';
 import LotWater from '../asset/lotwater.svg';
 import GoldenRatio from '../asset/golden.svg';
 import Complete from './Complete';
-import { getProgress } from '../api/progress';
 
-const Soup = () => {
+const Soup = ({ readings }) => {
   const soups = [
     {
       id: 'greenOnion',
@@ -60,45 +59,40 @@ const Soup = () => {
       color: '#B4DCE9',
     },
   ];
-  const getSoup = async () => {
-    const soupData = await getProgress();
-    // console.log(soupData);
 
-    const values = Object.values(soupData);
-    const setValues = new Set(values);
-    let map = new Map(Object.entries(soupData));
-    const most = [...map.entries()].reduce((a, b) => (a[1] > b[1] ? a : b))[0];
+  const values = Object.values(readings);
+  const setValues = new Set(values);
+  let map = new Map(Object.entries(readings));
+  const most = [...map.entries()].reduce((a, b) => (a[1] > b[1] ? a : b), 0)[0];
 
-    if (setValues.size === 1) {
-      return (
-        <Complete
-          source={GoldenRatio}
-          color={'#F3D666'}
-          title={'황금비율 떡국'}
-          text={'2023년은 완벽한 한 해가 되겠는걸요?'}
-          ingredient={'완벽한 떡국'}
-        />
-      );
-    } else {
-      return (
-        <div>
-          {soups
-            .filter((soup) => soup.id === most)
-            .map((soup) => (
-              <Complete
-                key={soup.id}
-                source={soup.img}
-                color={soup.color}
-                title={soup.title}
-                text={soup.text}
-                ingredient={soup.ingredient}
-              />
-            ))}
-        </div>
-      );
-    }
-  };
-  getSoup();
+  if (setValues.size === 1) {
+    return (
+      <Complete
+        source={GoldenRatio}
+        color={'#F3D666'}
+        title={'황금비율 떡국'}
+        text={'2023년은 완벽한 한 해가 되겠는걸요?'}
+        ingredient={'완벽한 떡국'}
+      />
+    );
+  } else {
+    return (
+      <div>
+        {soups
+          .filter((soup) => soup.id === most)
+          .map((soup) => (
+            <Complete
+              key={soup.id}
+              source={soup.img}
+              color={soup.color}
+              title={soup.title}
+              text={soup.text}
+              ingredient={soup.ingredient}
+            />
+          ))}
+      </div>
+    );
+  }
 };
 
 export default Soup;

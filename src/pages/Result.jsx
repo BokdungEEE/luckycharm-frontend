@@ -1,28 +1,18 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from 'react';
-=======
 import React, { useEffect, useState } from 'react';
->>>>>>> ca9465baa4283138e8e67ef903f244dddc60d1af
 import { ReactComponent as Arrow } from '../asset/arrow.svg';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Soup from '../components/Soup';
 import ProgressBar from '../components/progressbar';
 import Received from '../components/received';
-<<<<<<< HEAD
-import LoadingPage from './LoadingPage';
-import { getProgress } from '../api/progress';
-import { getReceived } from '../api/received';
-import Ingredient from '../components/Ingredient';
-import { data } from '../data/selectData';
-=======
 import { getIngredients } from '../api/getIngredients';
 import Notfoundpage from './NotFoundPage';
->>>>>>> ca9465baa4283138e8e67ef903f244dddc60d1af
+import { getReceived } from '../api/received';
 
 const Result = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [ingredients, setIngredients] = useState({});
+  const [received, setReceived] = useState({});
 
   useEffect(() => {
     getData();
@@ -30,25 +20,18 @@ const Result = () => {
   const getData = async () => {
     setIsLoading(true);
     const data = await getIngredients();
-    console.log(data);
+    const receivedData = await getReceived();
     setIngredients(data);
+    setReceived(receivedData);
     setIsLoading(false);
   };
+
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
   };
+  console.log(received);
 
-  let readings = [
-    {
-      rice: 30,
-      green_onion: 30,
-      sea_weed: 30,
-      meat: 300,
-      egg: 30,
-      water: 30,
-    },
-  ];
   const sample = [
     {
       ingredient: 'rice',
@@ -81,69 +64,23 @@ const Result = () => {
       message: '새복많',
     },
   ];
-<<<<<<< HEAD
-  // const getData = getReceived();
-  // console.log(getData);
-  const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState();
-  const navigate = useNavigate();
-  const goBack = () => {
-    navigate(-1);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-  const getData = async () => {
-    setIsLoading(true);
-    const receivedData = await getReceived();
-    setData(receivedData);
-    setIsLoading(false);
-  };
-  console.log('data is', data);
-  // console.log('sample is', sample);
-
-  // let datas = data.map(function (element) {
-  //   console.log('datas is', datas);
-  // });
-  // console.log('sample is', sample);
-  // console.log(getProgress());
-  return (
-    <Container>
-      {isLoading ? (
-        <>
-          <LoadingPage />
-        </>
-      ) : (
-=======
   return (
     <Container>
       {!isLoading && ingredients ? (
->>>>>>> ca9465baa4283138e8e67ef903f244dddc60d1af
         <>
           <TopWrapper>
             <ArrowImg onClick={goBack} />
           </TopWrapper>
           <ResultContainer>
-<<<<<<< HEAD
-            <Soup />
+            <Soup readings={ingredients} />
           </ResultContainer>
-          <ProgressBar height={20} />
+          <ProgressBar readings={ingredients} height={20} />
           <ReceivedIngredient>
-            <Received readings={data} />
-          </ReceivedIngredient>
-        </>
-=======
-            <Soup readings={readings} />
-          </ResultContainer>
-          <ProgressBar readings={readings} height={20} />
-          <ReceivedIngredient>
-            <Received readings={readings} />
+            <Received readings={sample} />
           </ReceivedIngredient>
         </>
       ) : (
         <Notfoundpage />
->>>>>>> ca9465baa4283138e8e67ef903f244dddc60d1af
       )}
     </Container>
   );
