@@ -21,7 +21,7 @@ const Ingredient = ({
         textColor={selected === id && color}
         buttonColor={selected === id && bgcolor}
       >
-        {text}
+        {id}
       </SelectButton>
     </Container>
   );
