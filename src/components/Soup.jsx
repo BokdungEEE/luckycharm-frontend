@@ -35,7 +35,7 @@ const Soup = ({ readings }) => {
       color: '#4C4B4A',
     },
     {
-      id: 'meat',
+      id: 'meet',
       img: LotMeat,
       title: '단백질 떡국',
       ingredient: '고기!',
