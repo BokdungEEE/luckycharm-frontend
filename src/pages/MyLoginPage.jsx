@@ -38,16 +38,16 @@ const MyLoginPage = () => {
         <img src={boul} alt='boul' />
       </IngredientWrapper>
       <ButtonWrapper>
-        <LoginButton type='button'>
-          <Kakao>
-            <img src={kakao} alt='log' />
-          </Kakao>
-          <KakaoLink
-            href={`https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`}
-          >
+        <KakaoLink
+          href={`https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`}
+        >
+          <LoginButton type='button'>
+            <Kakao>
+              <img src={kakao} alt='log' />
+            </Kakao>
             카카오 로그인
-          </KakaoLink>
-        </LoginButton>
+          </LoginButton>
+        </KakaoLink>
       </ButtonWrapper>
     </Container>
   );
@@ -123,7 +123,6 @@ const IngredientWrapper = styled.div`
 
 const Kakao = styled.div`
   padding: 10px;
-  padding-top: 15px;
 `;
 
 const QueButtonWrapper = styled.div`
