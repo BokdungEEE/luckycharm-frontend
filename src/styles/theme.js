@@ -11,9 +11,10 @@ export const defaultTheme = {
     brown: '#947E5E',
     beige: '#D0CDB5',
     greenonion: '#8CC638',
-    seaweed: '#4C4B4A',
-    meat: '#84604A',
+    seaWeed: '#4C4B4A',
+    meet: '#84604A',
     egg: '#FFCA43',
     water: '#B4DCE9',
+    rice: '#ffffff',
   },
 };

@@ -45,7 +45,10 @@ const AfterMainPage = () => {
         <img src={img} alt='boul' />
       </IngredientWrapper>
       <ButtonWrapper>
-        <ConfirmButton type='button' onClick={() => navigate('/result')}>
+        <ConfirmButton
+          type='button'
+          onClick={() => navigate('/result', { state: data })}
+        >
           내 떡국 확인하기
         </ConfirmButton>
       </ButtonWrapper>

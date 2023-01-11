@@ -1,17 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from './DiscriptionModal';
+import { Container } from './DescriptionModal';
 import { ReactComponent as Cancel } from '../asset/cancel.svg';
 
-const MessageModal = () => {
+const MessageModal = ({ modalInfo, setIsOpen }) => {
+  const { content, nickName } = modalInfo;
+
   return (
-    <Container>
-      <ContentContainer>
-        <StyledCancel />
+    <Container onClick={() => setIsOpen(false)}>
+      <ContentContainer onClick={(e) => e.stopPropagation()}>
+        <StyledCancel onClick={() => setIsOpen(false)} />
         <MessageContainer>
           <Message>
-            <p>친구야 파 많이 먹어</p>
-            <Sender>김땡땡</Sender>
+            {content}
+            <Sender>{nickName}</Sender>
           </Message>
         </MessageContainer>
       </ContentContainer>
@@ -22,6 +24,7 @@ const MessageModal = () => {
 export default MessageModal;
 
 const ContentContainer = styled.div`
+  position: absolute;
   width: 342px;
   height: 350px;
   display: flex;

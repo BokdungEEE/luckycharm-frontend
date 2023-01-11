@@ -1,61 +1,23 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { ReceivedData } from '../data/recievedData';
 
-import ReceivedEgg from '../asset/receivedegg.svg';
-import ReceivedGreenonion from '../asset/receivedgreenonion.svg';
-import ReceivedMeat from '../asset/receivedmeat.svg';
-import ReceivedRice from '../asset/receivedricecake.svg';
-import ReceivedWater from '../asset/receivedwater.svg';
-import ReceivedSeaweed from '../asset/receivedseaweed.svg';
-
-const Received = (props) => {
-  const parent = props.readings;
-  const test = Object.entries(parent);
-  return parent.map((data, index) => {
-    if (data.ingredient == 'egg') {
-      return (
-        <Container key={index}>
-          <ReceivedImg src={ReceivedEgg} />
-          <NameTag textColor='egg'>{data.nickName}</NameTag>
-        </Container>
-      );
-    } else if (data.ingredient == 'greenOnion') {
-      return (
-        <Container key={index}>
-          <ReceivedImg src={ReceivedGreenonion} />
-          <NameTag textColor='greenonion'>{data.nickName}</NameTag>
-        </Container>
-      );
-    } else if (data.ingredient == 'meat') {
-      return (
-        <Container key={index}>
-          <ReceivedImg src={ReceivedMeat} />
-          <NameTag textColor='meat'>{data.nickName}</NameTag>
-        </Container>
-      );
-    } else if (data.ingredient == 'rice') {
-      return (
-        <Container key={index}>
-          <ReceivedImg src={ReceivedRice} />
-          <NameTag textColor='white'>{data.nickName}</NameTag>
-        </Container>
-      );
-    } else if (data.ingredient == 'water') {
-      return (
-        <Container key={index}>
-          <ReceivedImg src={ReceivedWater} />
-          <NameTag textColor='water'>{data.nickName}</NameTag>
-        </Container>
-      );
-    } else if (data.ingredient == 'seaWeed') {
-      return (
-        <Container key={index}>
-          <ReceivedImg src={ReceivedSeaweed} />
-          <NameTag textColor='seaweed'>{data.nickName}</NameTag>
-        </Container>
-      );
-    }
-  });
+const Received = ({ message, setIsOpen, setModalInfo }) => {
+  const { content, nickName, ingredient } = message;
+  const src = ReceivedData[ingredient];
+  const showMsgModal = () => {
+    setIsOpen(true);
+    setModalInfo({
+      content,
+      nickName,
+    });
+  };
+  return (
+    <Container>
+      <ReceivedImg src={src} onClick={showMsgModal} />
+      <NameTag textColor={ingredient}>{nickName}</NameTag>
+    </Container>
+  );
 };
 const Container = styled.div`
   position: relative;
@@ -78,38 +40,7 @@ const NameTag = styled.div`
   line-height: 24px;
   text-align: center;
   color: ${(props) => props.textColor};
-  ${({ textColor, theme }) => {
-    if (textColor === 'egg') {
-      return css`
-        color: ${theme.colors.egg};
-      `;
-    }
-    if (textColor === 'greenonion') {
-      return css`
-        color: ${theme.colors.greenonion};
-      `;
-    }
-    if (textColor === 'meat') {
-      return css`
-        color: ${theme.colors.meat};
-      `;
-    }
-    if (textColor === 'rice') {
-      return css`
-        color: ${theme.colors.white};
-      `;
-    }
-    if (textColor === 'water') {
-      return css`
-        color: ${theme.colors.water};
-      `;
-    }
-    if (textColor === 'seaweed') {
-      return css`
-        color: ${theme.colors.seaweed};
-      `;
-    }
-  }}
+  color: ${({ textColor, theme }) => theme.colors[textColor]};
 `;
 
 export default Received;
