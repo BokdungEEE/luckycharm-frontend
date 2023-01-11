@@ -15,7 +15,7 @@ import { IsBefore } from '../api/IsBefore';
 
 const IntroPage = () => {
   const [isLogin, setIsLogin] = useState(false);
-  const [hint, setHint] = useState({});
+  const [hint, setHint] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isBefore, setIsBefore] = useState(true);
   const { frinedKey } = useParams();
