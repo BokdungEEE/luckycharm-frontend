@@ -97,7 +97,7 @@ const Result = () => {
           </ResultContainer>
           <ProgressBar readings={ingredients} height={20} />
           <ReceivedIngredient>
-            <Received readings={received} />
+            <Received readings={sample} />
           </ReceivedIngredient>
         </>
       ) : (

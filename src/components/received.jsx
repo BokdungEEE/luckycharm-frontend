@@ -10,7 +10,7 @@ import ReceivedSeaweed from '../asset/receivedseaweed.svg';
 
 const Received = (props) => {
   const parent = props.readings;
-
+  const test = Object.entries(parent);
   return parent.map((data, index) => {
     if (data.ingredient == 'egg') {
       return (
@@ -33,7 +33,7 @@ const Received = (props) => {
           <NameTag textColor='meat'>{data.nickName}</NameTag>
         </Container>
       );
-    } else if (data.ingredient == '떡') {
+    } else if (data.ingredient == 'rice') {
       return (
         <Container key={index}>
           <ReceivedImg src={ReceivedRice} />
@@ -58,13 +58,13 @@ const Received = (props) => {
   });
 };
 const Container = styled.div`
-  width: 112px;
+  position: relative;
+  width: 195px;
   height: 192px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%;
 `;
 
 const ReceivedImg = styled.img`
