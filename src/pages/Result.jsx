@@ -12,7 +12,6 @@ import { getReceived } from '../api/received';
 const Result = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [ingredients, setIngredients] = useState({});
-  const [received, setReceived] = useState({});
 
   useEffect(() => {
     getData();
@@ -20,9 +19,7 @@ const Result = () => {
   const getData = async () => {
     setIsLoading(true);
     const data = await getIngredients();
-    const receivedData = await getReceived();
     setIngredients(data);
-    setReceived(receivedData);
     setIsLoading(false);
   };
 
@@ -90,7 +87,7 @@ const Result = () => {
   ];
   return (
     <Container>
-      {!isLoading && ingredients && received ? (
+      {!isLoading && ingredients ? (
         <>
           <TopWrapper>
             <ArrowImg onClick={goBack} />

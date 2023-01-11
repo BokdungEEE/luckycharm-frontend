@@ -11,8 +11,8 @@ const MainPage = () => {
   const [data, setData] = useState(null);
 
   const RoadMainPages = useCallback(async () => {
-    const data = await IsBefore();
-    setData(data);
+    const response = await IsBefore();
+    setData(response);
   }, []);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const MainPage = () => {
 
   if (!data) return <LoadingPage />;
 
-  if (!data.data) return <BeforeMyPage />;
+  if (data.data) return <BeforeMyPage />;
   return <AfterMyPage />;
 };
 
