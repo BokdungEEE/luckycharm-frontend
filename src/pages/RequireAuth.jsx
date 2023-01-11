@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { AccessTokenKey, FriendKey } from '../consts/LocalStorageKey';
 import LoadingPage from './LoadingPage';
 import { getValidation } from '../api/token';
-import LoginPage from './LoginPage';
+import MyLoginPage from './MyLoginPage';
 
 const RequireAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +31,7 @@ const RequireAuth = () => {
         </>
       ) : (
         <>
-          <LoginPage />
+          <MyLoginPage />
         </>
       )}
     </>

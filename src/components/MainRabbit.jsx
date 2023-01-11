@@ -28,7 +28,7 @@ const MainRabbit = ({ text, emotion }) => {
       <TableWrapper src={table} alt='table' />
       {text && (
         <BubbleWrapper>
-          <BubbleText>{HintText || '올해는 나의 해!'}</BubbleText>
+          <BubbleText>{HintText || text}</BubbleText>
         </BubbleWrapper>
       )}
     </ImgWrapper>
