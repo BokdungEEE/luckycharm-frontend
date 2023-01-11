@@ -110,8 +110,10 @@ const ButtonWrapper = styled.div`
 `;
 
 const ConfirmButton = styled(LongButton)`
-  padding-top: 5px;
-  color: ${({ theme }) => theme.colors.purple}; ;
+  color: ${({ theme }) => theme.colors.purple};
+  &:hover {
+    color: ${({ theme }) => theme.colors.beige};
+  }
 `;
 
 const IngredientWrapper = styled.div`

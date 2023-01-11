@@ -79,9 +79,9 @@ const IntroPage = () => {
             <img src={img} alt='ingred' />
           </IngredientWrapper>
           <ButtonWrapper>
-            <LongButton type='button' onClick={handleNavigate}>
+            <SubmitButton type='button' onClick={handleNavigate}>
               떡국 재료 보내기
-            </LongButton>
+            </SubmitButton>
           </ButtonWrapper>
         </>
       ) : (
@@ -141,4 +141,11 @@ const IngredientWrapper = styled.div`
   left: 50%;
   transform: translate(-50%);
   bottom: 120px;
+`;
+
+const SubmitButton = styled(LongButton)`
+  padding-top: 5px;
+  &:hover {
+    color: ${({ theme }) => theme.colors.beige};
+  }
 `;

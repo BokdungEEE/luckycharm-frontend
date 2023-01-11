@@ -8,10 +8,10 @@ import LotWater from '../asset/lotwater.svg';
 import GoldenRatio from '../asset/golden.svg';
 import Complete from './Complete';
 
-const Soup = (props) => {
+const Soup = ({ readings }) => {
   const soups = [
     {
-      id: 'green_onion',
+      id: 'greenOnion',
       img: LotGreenonion,
       title: '파릇파릇 떡국',
       ingredient: '파',
@@ -27,7 +27,7 @@ const Soup = (props) => {
       color: '#FFFFFF',
     },
     {
-      id: 'sea_weed',
+      id: 'seaWeed',
       img: LotSeaweed,
       title: '짭쪼름 떡국',
       ingredient: '김!',
@@ -60,24 +60,16 @@ const Soup = (props) => {
     },
   ];
 
-  const myobject = props.readings[0];
-  const values = Object.values(props.readings[0]);
-  const temp = values[0];
-  let map = new Map(Object.entries(myobject));
+  const values = Object.values(readings);
+  const setValues = new Set(values);
+  let map = new Map(Object.entries(readings));
+  const most = [...map.entries()].reduce((a, b) => (a[1] > b[1] ? a : b), 0)[0];
 
-  const most = [...map.entries()].reduce((a, b) => (a[1] > b[1] ? a : b))[0];
-
-  if (
-    values[1] === temp &&
-    values[2] === temp &&
-    values[3] === temp &&
-    values[4] === temp &&
-    values[5] === temp
-  ) {
+  if (setValues.size === 1) {
     return (
       <Complete
         source={GoldenRatio}
-        color={'F3D666'}
+        color={'#F3D666'}
         title={'황금비율 떡국'}
         text={'2023년은 완벽한 한 해가 되겠는걸요?'}
         ingredient={'완벽한 떡국'}
@@ -88,9 +80,9 @@ const Soup = (props) => {
       <div>
         {soups
           .filter((soup) => soup.id === most)
-          .map((soup, i) => (
+          .map((soup) => (
             <Complete
-              key={i}
+              key={soup.id}
               source={soup.img}
               color={soup.color}
               title={soup.title}

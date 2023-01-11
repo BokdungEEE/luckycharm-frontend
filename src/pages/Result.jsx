@@ -7,6 +7,7 @@ import ProgressBar from '../components/progressbar';
 import Received from '../components/received';
 import { getIngredients } from '../api/getIngredients';
 import Notfoundpage from './NotFoundPage';
+import { getReceived } from '../api/received';
 
 const Result = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,54 +19,69 @@ const Result = () => {
   const getData = async () => {
     setIsLoading(true);
     const data = await getIngredients();
-    console.log(data);
     setIngredients(data);
     setIsLoading(false);
   };
+
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
   };
 
-  let readings = [
-    {
-      rice: 30,
-      green_onion: 30,
-      sea_weed: 30,
-      meat: 300,
-      egg: 30,
-      water: 30,
-    },
-  ];
   const sample = [
     {
       ingredient: 'rice',
-      nickname: '김땡땡',
+      nickName: '김땡땡',
       message: '새복많',
     },
     {
       ingredient: 'egg',
-      nickname: '가나다라마바사',
+      nickName: '가나다라마바사',
       message: '새복많',
     },
     {
       ingredient: 'water',
-      nickname: 'water',
+      nickName: 'water',
       message: '새복많',
     },
     {
       ingredient: 'meat',
-      nickname: '김땡땡',
+      nickName: '김땡땡',
       message: '새복많',
     },
     {
-      ingredient: 'sea_weed',
-      nickname: '박땡땡',
+      ingredient: 'seaWeed',
+      nickName: '박땡땡',
       message: '새복많',
     },
     {
-      ingredient: 'green_onion',
-      nickname: '박땡땡',
+      ingredient: 'greenOnion',
+      nickName: '박땡땡',
+      message: '새복많',
+    },
+    {
+      ingredient: 'greenOnion',
+      nickName: '박땡땡',
+      message: '새복많',
+    },
+    {
+      ingredient: 'greenOnion',
+      nickName: '박땡땡',
+      message: '새복많',
+    },
+    {
+      ingredient: 'greenOnion',
+      nickName: '박땡땡',
+      message: '새복많',
+    },
+    {
+      ingredient: 'greenOnion',
+      nickName: '박땡땡',
+      message: '새복많',
+    },
+    {
+      ingredient: 'greenOnion',
+      nickName: '박땡땡',
       message: '새복많',
     },
   ];
@@ -77,11 +93,11 @@ const Result = () => {
             <ArrowImg onClick={goBack} />
           </TopWrapper>
           <ResultContainer>
-            <Soup readings={readings} />
+            <Soup readings={ingredients} />
           </ResultContainer>
-          <ProgressBar readings={readings} height={20} />
+          <ProgressBar readings={ingredients} height={20} />
           <ReceivedIngredient>
-            <Received readings={readings} />
+            <Received readings={sample} />
           </ReceivedIngredient>
         </>
       ) : (
@@ -94,6 +110,8 @@ const Result = () => {
 const Container = styled.div`
   display: flex;
   width: 390px;
+  height: 100vh;
+  overflow: scroll;
   margin: 0 auto;
   flex-direction: column;
   align-items: center;
@@ -117,8 +135,9 @@ const ResultContainer = styled.div`
 `;
 
 const ReceivedIngredient = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 195px 195px;
+  grid-template-rows: 195px 195px;
 `;
 
 export default Result;
