@@ -98,5 +98,7 @@ const IngredientWrapper = styled.div`
 const LouteButton = styled(LongButton)`
   background-color: ${({ theme }) => theme.colors.purple};
   color: ${({ theme }) => theme.colors.white};
-  padding-top: 5px;
+  &:hover {
+    color: ${({ theme }) => theme.colors.beige};
+  }
 `;
