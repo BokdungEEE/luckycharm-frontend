@@ -6,16 +6,21 @@ import Soup from '../components/Soup';
 import ProgressBar from '../components/progressbar';
 import Received from '../components/received';
 import { getIngredients } from '../api/getIngredients';
-import Notfoundpage from './NotFoundPage';
-import { getReceived } from '../api/received';
+import { useLocation } from 'react-router-dom';
+import LoadingPage from './LoadingPage';
+import MessageModal from '../components/MessageModal';
 
 const Result = () => {
+  const [modalInfo, setModalInfo] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [ingredients, setIngredients] = useState({});
+  const { state: recieved } = useLocation();
 
   useEffect(() => {
     getData();
   }, []);
+
   const getData = async () => {
     setIsLoading(true);
     const data = await getIngredients();
@@ -28,67 +33,13 @@ const Result = () => {
     navigate(-1);
   };
 
-  const sample = [
-    {
-      ingredient: 'rice',
-      nickName: '김땡땡',
-      message: '새복많',
-    },
-    {
-      ingredient: 'egg',
-      nickName: '가나다라마바사',
-      message: '새복많',
-    },
-    {
-      ingredient: 'water',
-      nickName: 'water',
-      message: '새복많',
-    },
-    {
-      ingredient: 'meat',
-      nickName: '김땡땡',
-      message: '새복많',
-    },
-    {
-      ingredient: 'seaWeed',
-      nickName: '박땡땡',
-      message: '새복많',
-    },
-    {
-      ingredient: 'greenOnion',
-      nickName: '박땡땡',
-      message: '새복많',
-    },
-    {
-      ingredient: 'greenOnion',
-      nickName: '박땡땡',
-      message: '새복많',
-    },
-    {
-      ingredient: 'greenOnion',
-      nickName: '박땡땡',
-      message: '새복많',
-    },
-    {
-      ingredient: 'greenOnion',
-      nickName: '박땡땡',
-      message: '새복많',
-    },
-    {
-      ingredient: 'greenOnion',
-      nickName: '박땡땡',
-      message: '새복많',
-    },
-    {
-      ingredient: 'greenOnion',
-      nickName: '박땡땡',
-      message: '새복많',
-    },
-  ];
   return (
     <Container>
-      {!isLoading && ingredients ? (
+      {!isLoading && ingredients && recieved ? (
         <>
+          {isOpen && (
+            <MessageModal modalInfo={modalInfo} setIsOpen={setIsOpen} />
+          )}
           <TopWrapper>
             <ArrowImg onClick={goBack} />
           </TopWrapper>
@@ -97,11 +48,18 @@ const Result = () => {
           </ResultContainer>
           <ProgressBar readings={ingredients} height={20} />
           <ReceivedIngredient>
-            <Received readings={sample} />
+            {recieved.map((msg, idx) => (
+              <Received
+                key={idx}
+                message={msg}
+                setIsOpen={setIsOpen}
+                setModalInfo={setModalInfo}
+              />
+            ))}
           </ReceivedIngredient>
         </>
       ) : (
-        <Notfoundpage />
+        <LoadingPage />
       )}
     </Container>
   );
