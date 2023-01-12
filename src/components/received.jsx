@@ -32,6 +32,7 @@ const Container = styled.div`
 const ReceivedImg = styled.img`
   width: 112px;
   height: 112px;
+  cursor: pointer;
 `;
 const NameTag = styled.div`
   width: 112px;

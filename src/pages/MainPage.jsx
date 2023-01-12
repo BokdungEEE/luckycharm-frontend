@@ -21,7 +21,7 @@ const MainPage = () => {
 
   if (!data) return <LoadingPage />;
 
-  if (!data.data) return <BeforeMyPage />;
+  if (data.data) return <BeforeMyPage />;
   return <AfterMyPage />;
 };
 

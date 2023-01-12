@@ -87,6 +87,7 @@ const Content = styled.div`
 
 const ConfirmBtn = styled(ConfirmButton)`
   margin-top: 30px;
+  cursor: pointer;
 `;
 
 const Text = styled.div`

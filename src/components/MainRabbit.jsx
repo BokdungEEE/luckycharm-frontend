@@ -14,10 +14,10 @@ const MainRabbit = ({ text, emotion }) => {
   }[emotion];
 
   const HintText = {
-    egg: '누가 달걀 좀 갖고 와 봐!',
+    egg: '누가 달걀 좀\n 갖고 와 봐!',
     rice: '중요한 게 빠졌어..',
     seaWeed: '2% 부족해..',
-    greenOnion: '한식 기본 재료가 빠졌는 걸?',
+    greenOnion: '한식 기본 재료가\n 빠졌는 걸?',
     water: '목이 막힐 것 같아..',
     meet: '단백질이 필요해..',
   }[text];
@@ -73,4 +73,6 @@ const BubbleText = styled.p`
   font-size: 20px;
   color: #686868;
   margin-bottom: 10px;
+  white-space: pre-wrap;
+  line-height: 24px;
 `;

@@ -23,6 +23,7 @@ const ProgressModal = ({ readings, setIsOpen }) => {
             setIsOpen(false);
           }}
         />
+
         <ProgressWrapper>
           <ProgressBar readings={readings} height={566} />
         </ProgressWrapper>
@@ -61,6 +62,7 @@ const StyledCancel = styled(Cancel)`
   align-self: flex-end;
   margin: 15px 20px;
   margin-left: 300px;
+  cursor: pointer;
 `;
 
 const Background = styled.div`

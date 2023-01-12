@@ -1,4 +1,3 @@
-import { FriendKey } from '../consts/LocalStorageKey';
 import { Axios } from '../lib/Axios';
 
 export const sendMessage = async (messageObj, friendKey) => {

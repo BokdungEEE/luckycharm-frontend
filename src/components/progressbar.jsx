@@ -28,6 +28,7 @@ const ProgressBar = ({ readings, height, setIsOpen }) => {
 const Bar = styled.div`
   float: left;
   margin-bottom: 42px;
+  cursor: pointer;
 
   &:first-child {
     border-top-left-radius: 10px;

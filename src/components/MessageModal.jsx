@@ -53,6 +53,7 @@ const Message = styled.div`
 const StyledCancel = styled(Cancel)`
   align-self: flex-end;
   margin: 15px 20px;
+  cursor: pointer; ;
 `;
 const Sender = styled.p`
   color: ${(props) => props.theme.colors.brown};
