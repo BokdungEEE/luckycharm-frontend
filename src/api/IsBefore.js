@@ -5,6 +5,6 @@ export const IsBefore = async () => {
     const { data } = await Axios('/api/validate/time');
     return data;
   } catch (e) {
-    alert(e.response);
+    alert('잘못된 요청입니다.');
   }
 };

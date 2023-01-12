@@ -11,7 +11,7 @@ export default {
         method: 'get',
       });
     } catch (e) {
-      alert(e.response);
+      alert('잘못된 요청입니다.');
     }
   },
 
@@ -25,7 +25,7 @@ export default {
         method: 'get',
       });
     } catch (e) {
-      alert(e.response);
+      alert('잘못된 요청입니다.');
     }
   },
 
@@ -39,7 +39,7 @@ export default {
         method: 'get',
       });
     } catch (e) {
-      alert(e.response);
+      alert('잘못된 요청입니다.');
     }
   },
 
@@ -53,7 +53,7 @@ export default {
         method: 'get',
       });
     } catch (e) {
-      alert(e.response);
+      alert('잘못된 요청입니다.');
     }
   },
 };

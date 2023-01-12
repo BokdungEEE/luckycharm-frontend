@@ -7,6 +7,6 @@ export const getValidation = async () => {
     if (res.data.data === 'please sign in') toast('로그인이 필요합니다.');
     return res.data.data;
   } catch (e) {
-    toast(e.response);
+    alert('잘못된 요청입니다.');
   }
 };

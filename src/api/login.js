@@ -8,6 +8,6 @@ export const login = async (code) => {
     Axios.defaults.headers.Authorization = `Bearer ${accessToken}`;
     localStorage.setItem(AccessTokenKey, accessToken);
   } catch (e) {
-    alert(e.response);
+    alert('잘못된 요청입니다.');
   }
 };

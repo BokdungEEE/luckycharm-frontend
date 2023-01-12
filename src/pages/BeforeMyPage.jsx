@@ -10,10 +10,11 @@ import server from '../api/service';
 import { useCallback } from 'react';
 import { useEffect } from 'react';
 import LoadingPage from './LoadingPage';
-import { toast } from 'react-toastify';
+import Toast from '../components/Toast';
 
 const MainPage = () => {
   const [data, setData] = useState(null);
+  const [toast, setToast] = useState(false);
 
   const beforeRoadMyPages = useCallback(async () => {
     const { data } = await server.beforeRoadMyPage();
@@ -34,7 +35,7 @@ const MainPage = () => {
 
   const copyUrl = async () => {
     await navigator.clipboard.writeText(data.myLink);
-    toast('url이 복사되었습니다.');
+    setToast(true);
   };
 
   if (!data) return <LoadingPage />;
@@ -63,6 +64,7 @@ const MainPage = () => {
         <ShareButton type='button' onClick={copyUrl}>
           링크 공유하기
         </ShareButton>
+        {toast && <Toast setToast={setToast} text='URL이 복사되었습니다.' />}
       </ButtonWrapper>
     </Container>
   );

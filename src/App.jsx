@@ -11,20 +11,10 @@ import MyLoginPage from './pages/MyLoginPage';
 import Result from './pages/Result';
 import Notfoundpage from './pages/NotFoundPage';
 import RequireAuth from './pages/RequireAuth';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import styled from 'styled-components';
 
 const App = () => {
   return (
     <>
-      <CommonToastContainerStyled
-        position='bottom-center'
-        limit={1}
-        closeButton={false}
-        autoClose={3000}
-        hideProgressBar
-      />
       <Routes>
         <Route path='/' element={<RequireAuth />}>
           <Route path='' element={<MainPage />} />
@@ -44,20 +34,3 @@ const App = () => {
 };
 
 export default App;
-
-const CommonToastContainerStyled = styled(ToastContainer)`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  font-weight: 400;
-  font-size: 20px;
-  .Toastify__toast {
-    font-family: 'GangwonEdu_OTFBoldA';
-    width: 342px;
-    height: 68px;
-    padding: 20px;
-    border-radius: 20px;
-    background-color: ${(props) => props.theme.colors.beige};
-    color: ${(props) => props.theme.colors.brown};
-  }
-`;
