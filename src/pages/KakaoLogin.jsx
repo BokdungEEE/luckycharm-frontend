@@ -16,11 +16,14 @@ const KakaoLogin = () => {
   }, []);
 
   const signin = async () => {
-    await login(code);
-    if (friendKey) {
-      navigate(`/intro/${friendKey}`);
-    } else {
-      navigate('/');
+    if (!code) navigate('/');
+    else {
+      await login(code);
+      if (friendKey) {
+        navigate(`/intro/${friendKey}`);
+      } else {
+        navigate('/');
+      }
     }
   };
 

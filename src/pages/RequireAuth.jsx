@@ -13,7 +13,10 @@ const RequireAuth = () => {
     setIsLoading(true);
     const data = await getValidation();
     if (data === "This user's token is valid") setIsLogin(true);
-    else setIsLogin(false);
+    else {
+      setIsLogin(false);
+      alert('다시 로그인해 주세요!');
+    }
     setIsLoading(false);
   };
   useEffect(() => {

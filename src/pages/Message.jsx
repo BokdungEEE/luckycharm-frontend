@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 import Notfoundpage from './NotFoundPage';
 
 const Message = () => {
-  const [selectedData, setSelectedData] = useState({});
+  const [selectedData, setSelectedData] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
   const [nickname, setNickname] = useState('');
@@ -27,18 +27,27 @@ const Message = () => {
     setContent(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const submitObj = {
       ingredient: selectedData.text,
       nickName: nickname,
       content,
     };
     localStorage.setItem(SelectedIngredientImgKey, selectedData.img);
-    sendMessage(submitObj, friendKey);
-    navigate('/submit');
+    const res = await sendMessage(submitObj, friendKey);
+    handleRes(res);
   };
   const goBack = () => {
     navigate(-1);
+  };
+
+  const handleRes = (res) => {
+    const msg = res.data.data;
+    if (msg === 201) navigate('/submit');
+    else {
+      alert(msg);
+      navigate('/');
+    }
   };
 
   return (
