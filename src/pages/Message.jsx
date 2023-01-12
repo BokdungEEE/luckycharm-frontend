@@ -43,7 +43,7 @@ const Message = () => {
 
   const handleRes = (res) => {
     const msg = res.data.data;
-    if (msg === 201) navigate('/submit');
+    if (msg === 'OK') navigate('/submit');
     else {
       alert(msg);
       navigate('/');
