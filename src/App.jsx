@@ -21,15 +21,14 @@ const App = () => {
       <Routes>
         <Route path='/' element={<RequireAuth />}>
           <Route path='' element={<MainPage />} />
-
           <Route path='submit' element={<SubmitPage />} />
           <Route path='result' element={<Result />} />
         </Route>
-        <Route path='select' element={<Select />} />
-        <Route path='message' element={<Message />} />
+        <Route path='select/:friendKey' element={<Select />} />
+        <Route path='message/:friendKey' element={<Message />} />
         <Route path='flogin' element={<LoginPage />} />
 
-        <Route path='intro/:frinedKey' element={<IntroPage />} />
+        <Route path='intro/:friendKey' element={<IntroPage />} />
         <Route path='oauth' element={<KakaoLogin />} />
         <Route path='login' element={<MyLoginPage />} />
         <Route path='/*' element={<Notfoundpage />} />

@@ -18,14 +18,15 @@ const IntroPage = () => {
   const [hint, setHint] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isBefore, setIsBefore] = useState(true);
-  const { frinedKey } = useParams();
+  const { friendKey } = useParams();
   const navigate = useNavigate();
-  localStorage.setItem(FriendKey, frinedKey);
+  localStorage.setItem(FriendKey, friendKey);
 
   const roadHints = async () => {
     setIsLoading(true);
     const { data } = await server.roadHint();
-    setHint(data.data);
+    if (data.data === 'please sign in') setHint('떡국 먹고 싶어..');
+    else setHint(data.data);
     setIsLoading(false);
   };
 
@@ -52,7 +53,7 @@ const IntroPage = () => {
   }, []);
 
   const handleNavigate = () => {
-    if (isLogin) navigate('/select');
+    if (isLogin) navigate(`/select/${friendKey}`);
     else navigate('/flogin');
   };
 

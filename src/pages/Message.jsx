@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ReactComponent as Arrow } from '../asset/arrow.svg';
 import styled from 'styled-components';
 import { LongButton } from '../components/button';
 import { sendMessage } from '../api/message';
-import { FriendKey, SelectedIngredientImgKey } from '../consts/LocalStorageKey';
+import { SelectedIngredientImgKey } from '../consts/LocalStorageKey';
 import { useEffect } from 'react';
 import Notfoundpage from './NotFoundPage';
 
@@ -14,9 +14,9 @@ const Message = () => {
   const navigate = useNavigate();
   const [nickname, setNickname] = useState('');
   const [content, setContent] = useState('');
+  const { friendKey } = useParams();
 
   useEffect(() => {
-    if (!localStorage.getItem(FriendKey)) navigate('/');
     if (location.state) setSelectedData(location.state.selectedData);
   }, []);
 
@@ -34,10 +34,9 @@ const Message = () => {
       content,
     };
     localStorage.setItem(SelectedIngredientImgKey, selectedData.img);
-    sendMessage(submitObj);
+    sendMessage(submitObj, friendKey);
     navigate('/submit');
   };
-
   const goBack = () => {
     navigate(-1);
   };

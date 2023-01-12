@@ -3,7 +3,7 @@ import { ReactComponent as Arrow } from '../asset/arrow.svg';
 import { data } from '../data/selectData';
 import Ingredient from '../components/Ingredient';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { LongButton } from '../components/button';
 import { useEffect } from 'react';
 import { FriendKey } from '../consts/LocalStorageKey';
@@ -12,15 +12,16 @@ const Select = () => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState('');
   const [selectedData, setData] = useState({});
+  const { friendKey } = useParams();
 
   useEffect(() => {
-    if (!localStorage.getItem(FriendKey)) navigate('/');
     const select = data.filter((ingredient) => selected == ingredient.id)[0];
     setData(select);
+    localStorage.removeItem(FriendKey);
   }, [selected]);
 
   const onSelect = () => {
-    navigate('/message', { state: { selectedData } });
+    navigate(`/message/${friendKey}`, { state: { selectedData } });
   };
   const goBack = () => {
     navigate(-1);
