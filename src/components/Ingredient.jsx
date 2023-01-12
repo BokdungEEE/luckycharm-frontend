@@ -2,15 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { IngredientButton } from './button';
 
-const Ingredient = ({
-  id,
-  source,
-  text,
-  color,
-  bgcolor,
-  setSelected,
-  selected,
-}) => {
+const Ingredient = ({ id, source, color, bgcolor, setSelected, selected }) => {
   return (
     <Container>
       <IngredientImg src={source} />
