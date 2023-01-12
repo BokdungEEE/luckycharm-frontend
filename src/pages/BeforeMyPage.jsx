@@ -9,11 +9,10 @@ import DescriptionModal from '../components/DescriptionModal';
 import server from '../api/service';
 import { useCallback } from 'react';
 import { useEffect } from 'react';
-import Toast from '../components/Toast';
 import LoadingPage from './LoadingPage';
+import { toast } from 'react-toastify';
 
 const MainPage = () => {
-  const [toast, setToast] = useState(false);
   const [data, setData] = useState(null);
 
   const beforeRoadMyPages = useCallback(async () => {
@@ -35,7 +34,7 @@ const MainPage = () => {
 
   const copyUrl = async () => {
     await navigator.clipboard.writeText(data.myLink);
-    setToast(true);
+    toast('url이 복사되었습니다.');
   };
 
   if (!data) return <LoadingPage />;
@@ -64,7 +63,6 @@ const MainPage = () => {
         <ShareButton type='button' onClick={copyUrl}>
           링크 공유하기
         </ShareButton>
-        {toast && <Toast setToast={setToast} text='URL이 복사되었습니다.' />}
       </ButtonWrapper>
     </Container>
   );

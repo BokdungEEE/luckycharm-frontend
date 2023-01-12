@@ -8,6 +8,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body{
+    width:390px;
+    height:100vh;
     margin : 0 auto;
     padding:0;
     font-family: 'GangwonEdu_OTFBoldA';
